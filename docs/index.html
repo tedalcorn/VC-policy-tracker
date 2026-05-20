@@ -359,14 +359,6 @@ tbody tr:hover { background: #fbf9f3; }
     <select id="art-bucket"><option value="">All domains</option></select>
     <select id="art-author"><option value="">All authors</option></select>
     <select id="art-type"><option value="">All article types</option></select>
-    <select id="art-score">
-      <option value="">Any AI score</option>
-      <option value="5">Score ≥ 5</option>
-      <option value="4">Score ≥ 4</option>
-      <option value="3">Score ≥ 3</option>
-      <option value="2">Score ≥ 2</option>
-      <option value="1">Score ≥ 1</option>
-    </select>
     <span class="count" id="art-count"></span>
   </div>
   <table id="art-table">
@@ -607,7 +599,12 @@ function populateFilters() {
     .sort((a, b) => lastNameKey(a).localeCompare(lastNameKey(b)));
   fillSelect("art-author", authors);
   const types = Array.from(new Set(ARTICLES.map(a => a.article_type).filter(Boolean))).sort();
-  fillSelect("art-type", types);
+  // Pretty label for the dropdown (caps first word, spaces); keep raw value for filtering.
+  const prettyType = t => {
+    const s = t.replace(/_/g, " ");
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  };
+  fillSelectMapped("art-type", types, prettyType);
   // Policy-tracker agencies come from POLICY rows (what's actually being asked of),
   // not body-scan mentions. Tracker domain dropdown alphabetized like the article one.
   fillSelect("pol-domain", SORTED);
@@ -634,6 +631,14 @@ function fillSelect(id, opts) {
     el.value = o; el.textContent = o; sel.appendChild(el);
   });
 }
+function fillSelectMapped(id, opts, labelFn) {
+  const sel = document.getElementById(id);
+  if (!sel) return;
+  opts.forEach(o => {
+    const el = document.createElement("option");
+    el.value = o; el.textContent = labelFn(o); sel.appendChild(el);
+  });
+}
 
 // ============ Articles tab ============
 function articleFilter() {
@@ -642,16 +647,11 @@ function articleFilter() {
   const bucket = document.getElementById("art-bucket").value;
   const author = document.getElementById("art-author").value;
   const type = document.getElementById("art-type").value;
-  const minScore = document.getElementById("art-score").value;
   return ARTICLES.filter(a => {
     if (year && String(a.year) !== year) return false;
     if (bucket && !(a.buckets || []).includes(bucket)) return false;
     if (author && a.primary_author !== author) return false;
     if (type && a.article_type !== type) return false;
-    if (minScore) {
-      const s = SCORES[a.slug];
-      if (!s || Number(s.score) < Number(minScore)) return false;
-    }
     if (q) {
       const blob = (a.title + " " + a.primary_author + " " + (a.authors||[]).join(" ") + " " + (a.excerpt||"")).toLowerCase();
       if (!blob.includes(q)) return false;
@@ -1068,7 +1068,7 @@ document.querySelectorAll("nav.tabs button").forEach(b => {
 document.querySelectorAll("input[name='chart-mode']").forEach(r => r.onchange = renderChart);
 document.getElementById("chart-articles-only").onchange = renderChart;
 document.getElementById("art-search").oninput = renderArticles;
-["art-year","art-bucket","art-author","art-type","art-score"].forEach(id => document.getElementById(id).onchange = renderArticles);
+["art-year","art-bucket","art-author","art-type"].forEach(id => document.getElementById(id).onchange = renderArticles);
 document.querySelectorAll("#art-table th").forEach(th => th.onclick = () => {
   const k = th.dataset.sort;
   if (k === SORT_KEY) SORT_DIR *= -1; else { SORT_KEY = k; SORT_DIR = -1; }
