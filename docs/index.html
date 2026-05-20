@@ -344,7 +344,7 @@ tbody tr:hover { background: #fbf9f3; }
 </header>
 
 <nav class="tabs">
-  <button data-tab="articles" class="active">Articles</button>
+  <button data-tab="articles" class="active">Pages</button>
   <button data-tab="topics">Years</button>
   <button data-tab="authors">Authors</button>
   <button data-tab="policy">Policy tracker</button>
@@ -358,7 +358,7 @@ tbody tr:hover { background: #fbf9f3; }
     <select id="art-year"><option value="">All years</option></select>
     <select id="art-bucket"><option value="">All domains</option></select>
     <select id="art-author"><option value="">All authors</option></select>
-    <select id="art-type"><option value="">All article types</option></select>
+    <select id="art-type"><option value="">All page types</option></select>
     <span class="count" id="art-count"></span>
   </div>
   <table id="art-table">
@@ -388,7 +388,6 @@ tbody tr:hover { background: #fbf9f3; }
   <div class="filters">
     <input type="text" class="search" id="aut-search" placeholder="Search author or institution…">
     <select id="aut-profession"><option value="">All professions</option></select>
-    <select id="aut-nyc"><option value="">NYC-based?</option><option value="yes">NYC</option><option value="no">Outside</option><option value="unknown">Unknown</option></select>
     <select id="aut-domain"><option value="">All domains</option></select>
     <label class="inline-toggle"><input type="checkbox" id="aut-articles-only" checked> Articles only</label>
     <span class="count" id="aut-count"></span>
@@ -576,6 +575,12 @@ async function loadData() {
   renderAuthors();
   renderPolicy();
   renderChart();
+  applyHashToUI();
+  // After hash applied, re-render with restored filters
+  renderArticles();
+  renderAuthors();
+  renderPolicy();
+  renderChart();
 }
 
 function renderHeader() {
@@ -602,11 +607,13 @@ function populateFilters() {
   fillSelect("art-author", authors);
   const types = Array.from(new Set(ARTICLES.map(a => a.article_type).filter(Boolean))).sort();
   // Pretty label for the dropdown (caps first word, spaces); keep raw value for filtering.
+  // "article" goes first and renders in bold since most pieces are articles.
   const prettyType = t => {
     const s = t.replace(/_/g, " ");
     return s.charAt(0).toUpperCase() + s.slice(1);
   };
-  fillSelectMapped("art-type", types, prettyType);
+  const orderedTypes = ["article", ...types.filter(t => t !== "article")];
+  fillSelectMapped("art-type", orderedTypes, prettyType, t => t === "article");
   // Policy-tracker agencies come from POLICY rows (what's actually being asked of),
   // not body-scan mentions. Tracker domain dropdown alphabetized like the article one.
   fillSelect("pol-domain", SORTED);
@@ -633,12 +640,14 @@ function fillSelect(id, opts) {
     el.value = o; el.textContent = o; sel.appendChild(el);
   });
 }
-function fillSelectMapped(id, opts, labelFn) {
+function fillSelectMapped(id, opts, labelFn, boldFn) {
   const sel = document.getElementById(id);
   if (!sel) return;
   opts.forEach(o => {
     const el = document.createElement("option");
-    el.value = o; el.textContent = labelFn(o); sel.appendChild(el);
+    el.value = o; el.textContent = labelFn(o);
+    if (boldFn && boldFn(o)) el.style.fontWeight = "bold";
+    sel.appendChild(el);
   });
 }
 
@@ -796,7 +805,6 @@ function renderAuthors() {
   if (!Object.keys(AUTHOR_ARTICLES).length) buildAuthorIndex();
   const q = document.getElementById("aut-search").value.toLowerCase();
   const prof = document.getElementById("aut-profession").value;
-  const nyc = document.getElementById("aut-nyc").value;
   const articlesOnly = document.getElementById("aut-articles-only").checked;
   const domainFilter = document.getElementById("aut-domain").value;
 
@@ -814,7 +822,6 @@ function renderAuthors() {
   const filtered = names.filter(n => {
     const meta = AUTHOR_META[n] || {};
     if (prof && meta.current_profession !== prof) return false;
-    if (nyc && (meta.nyc_based || "unknown") !== nyc) return false;
     if (q && !(n + " " + (meta.current_employer||"") + " " + (meta.current_profession||"")).toLowerCase().includes(q)) return false;
     return true;
   });
@@ -861,7 +868,6 @@ function renderAuthorCard(name, artsOverride) {
   const metaParts = [];
   metaParts.push(meta.current_profession || (name === "No byline" ? "institutional" : "unclassified"));
   if (meta.current_employer) metaParts.push(meta.current_employer);
-  if (meta.nyc_based === "yes") metaParts.push("NYC");
   return `<div class="author-card" data-author="${escapeHtml(name)}">
     <div>
       <div class="name">${escapeHtml(name)}</div>
@@ -905,7 +911,6 @@ function renderAuthorDetail() {
   const metaLine = [
     meta.current_profession || (name === "No byline" ? "institutional" : "unclassified"),
     meta.current_employer || "",
-    meta.nyc_based === "yes" ? "NYC-based" : (meta.nyc_based === "no" ? "outside NYC" : ""),
   ].filter(Boolean).join(" · ");
   const nonArt = arts.length - arts.filter(a => a.article_type === "article").length;
   const toggle = nonArt > 0
@@ -1066,12 +1071,90 @@ document.querySelectorAll("nav.tabs button").forEach(b => {
     b.classList.add("active");
     document.getElementById("tab-" + b.dataset.tab).classList.add("active");
     if (b.dataset.tab === "topics") setTimeout(renderChart, 50);
+    syncHashFromUI();
   };
 });
-document.querySelectorAll("input[name='chart-mode']").forEach(r => r.onchange = renderChart);
-document.getElementById("chart-articles-only").onchange = renderChart;
-document.getElementById("art-search").oninput = renderArticles;
-["art-year","art-bucket","art-author","art-type"].forEach(id => document.getElementById(id).onchange = renderArticles);
+
+// ============ URL hash sync (shareable links) ============
+// Each entry maps a filter element to a short hash key. Only non-default
+// values are written into the hash so URLs stay readable.
+const HASH_FIELDS = [
+  // [elementId, hashKey, kind, defaultValue]
+  ["art-search",        "q",         "text",     ""],
+  ["art-year",          "year",      "select",   ""],
+  ["art-bucket",        "domain",    "select",   ""],
+  ["art-author",        "author",    "select",   ""],
+  ["art-type",          "type",      "select",   ""],
+  ["aut-search",        "autq",      "text",     ""],
+  ["aut-profession",    "autprof",   "select",   ""],
+  ["aut-domain",        "autdomain", "select",   ""],
+  ["aut-articles-only", "autart",    "checkbox", true],
+  ["pol-domain",        "poldomain", "select",   ""],
+  ["pol-agency",        "polagency", "select",   ""],
+  ["pol-status",        "polstatus", "select",   ""],
+  ["pol-lever",         "pollever",  "select",   ""],
+  ["pol-inferred-only", "polinf",    "checkbox", true],
+  ["chart-articles-only","chartart", "checkbox", true],
+];
+
+function readEl(id, kind) {
+  const el = document.getElementById(id);
+  if (!el) return null;
+  return kind === "checkbox" ? el.checked : el.value;
+}
+function writeEl(id, kind, val) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  if (kind === "checkbox") el.checked = (val === true || val === "1" || val === "true");
+  else el.value = val;
+}
+
+function syncHashFromUI() {
+  const params = new URLSearchParams();
+  const activeTab = document.querySelector("nav.tabs button.active");
+  if (activeTab && activeTab.dataset.tab !== "articles") params.set("tab", activeTab.dataset.tab);
+  HASH_FIELDS.forEach(([id, key, kind, dflt]) => {
+    const v = readEl(id, kind);
+    if (v === null || v === undefined) return;
+    if (kind === "checkbox") {
+      if (v !== dflt) params.set(key, v ? "1" : "0");
+    } else {
+      if (v !== dflt) params.set(key, v);
+    }
+  });
+  const chartMode = document.querySelector("input[name='chart-mode']:checked");
+  if (chartMode && chartMode.value !== "counts") params.set("chartmode", chartMode.value);
+  const qs = params.toString();
+  const newHash = qs ? "#" + qs : "";
+  if (newHash !== window.location.hash) {
+    history.replaceState(null, "", newHash || window.location.pathname);
+  }
+}
+
+function applyHashToUI() {
+  const raw = window.location.hash.replace(/^#/, "");
+  if (!raw) return;
+  const params = new URLSearchParams(raw);
+  HASH_FIELDS.forEach(([id, key, kind]) => {
+    if (params.has(key)) writeEl(id, kind, params.get(key));
+  });
+  if (params.has("chartmode")) {
+    const r = document.querySelector(`input[name='chart-mode'][value='${params.get("chartmode")}']`);
+    if (r) r.checked = true;
+  }
+  if (params.has("tab")) {
+    const btn = document.querySelector(`nav.tabs button[data-tab="${params.get("tab")}"]`);
+    if (btn) btn.click();
+  }
+}
+function renderArticlesAndSync() { renderArticles(); syncHashFromUI(); }
+function renderAuthorsAndSync() { renderAuthors(); syncHashFromUI(); }
+function renderPolicyAndSync() { renderPolicy(); syncHashFromUI(); }
+function renderChartAndSync() { renderChart(); syncHashFromUI(); }
+document.querySelectorAll("input[name='chart-mode']").forEach(r => r.onchange = renderChartAndSync);
+document.getElementById("chart-articles-only").onchange = renderChartAndSync;
+document.getElementById("art-search").oninput = renderArticlesAndSync;
+["art-year","art-bucket","art-author","art-type"].forEach(id => document.getElementById(id).onchange = renderArticlesAndSync);
 document.querySelectorAll("#art-table th").forEach(th => th.onclick = () => {
   const k = th.dataset.sort;
   if (k === SORT_KEY) SORT_DIR *= -1; else { SORT_KEY = k; SORT_DIR = -1; }
@@ -1083,8 +1166,8 @@ document.querySelectorAll("#art-table th").forEach(th => th.onclick = () => {
 });
 // Indicate default sort on load
 document.querySelector('#art-table th[data-sort="published_at"]').classList.add("active");
-document.getElementById("aut-search").oninput = renderAuthors;
-["aut-profession","aut-nyc","aut-articles-only","aut-domain"].forEach(id => document.getElementById(id).onchange = renderAuthors);
+document.getElementById("aut-search").oninput = renderAuthorsAndSync;
+["aut-profession","aut-articles-only","aut-domain"].forEach(id => document.getElementById(id).onchange = renderAuthorsAndSync);
 document.querySelectorAll(".author-header .sort-h").forEach(el => {
   el.onclick = () => {
     const k = el.dataset.sort;
@@ -1093,7 +1176,7 @@ document.querySelectorAll(".author-header .sort-h").forEach(el => {
     renderAuthors();
   };
 });
-["pol-domain","pol-agency","pol-status","pol-lever","pol-inferred-only"].forEach(id => document.getElementById(id).onchange = renderPolicy);
+["pol-domain","pol-agency","pol-status","pol-lever","pol-inferred-only"].forEach(id => document.getElementById(id).onchange = renderPolicyAndSync);
 document.querySelectorAll("#pol-table th").forEach(th => th.onclick = () => {
   const k = th.dataset.sort;
   if (k === POL_SORT.key) POL_SORT.dir *= -1;
