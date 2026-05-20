@@ -389,6 +389,7 @@ tbody tr:hover { background: #fbf9f3; }
     <input type="text" class="search" id="aut-search" placeholder="Search author or institution…">
     <select id="aut-profession"><option value="">All professions</option></select>
     <select id="aut-nyc"><option value="">NYC-based?</option><option value="yes">NYC</option><option value="no">Outside</option><option value="unknown">Unknown</option></select>
+    <select id="aut-domain"><option value="">All domains</option></select>
     <label class="inline-toggle"><input type="checkbox" id="aut-articles-only" checked> Articles only</label>
     <span class="count" id="aut-count"></span>
   </div>
@@ -595,6 +596,7 @@ function populateFilters() {
   // for visual clustering (Public Safety reds first, etc.)
   const SORTED = [...BUCKET_ORDER].sort();
   fillSelect("art-bucket", SORTED);
+  fillSelect("aut-domain", SORTED);
   const authors = Array.from(new Set(ARTICLES.map(a => a.primary_author).filter(Boolean)))
     .sort((a, b) => lastNameKey(a).localeCompare(lastNameKey(b)));
   fillSelect("art-author", authors);
@@ -796,14 +798,15 @@ function renderAuthors() {
   const prof = document.getElementById("aut-profession").value;
   const nyc = document.getElementById("aut-nyc").value;
   const articlesOnly = document.getElementById("aut-articles-only").checked;
+  const domainFilter = document.getElementById("aut-domain").value;
 
-  // When the toggle is on, every author's effective set is just their bylined
-  // articles. Authors with zero remaining pieces drop off the list.
+  // Apply both filters to each author's article set. Authors with zero
+  // remaining pieces drop off the list entirely.
   const effective = {};
   Object.keys(AUTHOR_ARTICLES).forEach(name => {
-    const arts = articlesOnly
-      ? AUTHOR_ARTICLES[name].filter(a => a.article_type === "article")
-      : AUTHOR_ARTICLES[name];
+    let arts = AUTHOR_ARTICLES[name];
+    if (articlesOnly) arts = arts.filter(a => a.article_type === "article");
+    if (domainFilter) arts = arts.filter(a => (a.buckets || []).includes(domainFilter));
     if (arts.length) effective[name] = arts;
   });
 
@@ -1081,7 +1084,7 @@ document.querySelectorAll("#art-table th").forEach(th => th.onclick = () => {
 // Indicate default sort on load
 document.querySelector('#art-table th[data-sort="published_at"]').classList.add("active");
 document.getElementById("aut-search").oninput = renderAuthors;
-["aut-profession","aut-nyc","aut-articles-only"].forEach(id => document.getElementById(id).onchange = renderAuthors);
+["aut-profession","aut-nyc","aut-articles-only","aut-domain"].forEach(id => document.getElementById(id).onchange = renderAuthors);
 document.querySelectorAll(".author-header .sort-h").forEach(el => {
   el.onclick = () => {
     const k = el.dataset.sort;
