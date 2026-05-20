@@ -1,0 +1,938 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vital City Coverage Tracker</title>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+:root {
+  --bg: #fafaf7;
+  --panel: #ffffff;
+  --ink: #1a1a1a;
+  --muted: #6a6a6a;
+  --line: #e5e3dd;
+  --accent: #b9381f;
+  --accent-soft: #f4dfd7;
+  --pill: #efece4;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a.title-link { color: var(--ink); }
+a.title-link:hover { color: var(--accent); text-decoration: underline; }
+
+header {
+  padding: 16px 24px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+header h1 { font-size: 20px; margin: 0; font-weight: 700; }
+header .stat { color: var(--muted); font-size: 13px; }
+header .stat strong { color: var(--ink); }
+
+nav.tabs {
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+  padding: 0 24px;
+  display: flex;
+  gap: 4px;
+}
+nav.tabs button {
+  background: none;
+  border: none;
+  padding: 12px 16px;
+  font: inherit;
+  color: var(--muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+nav.tabs button.active { color: var(--ink); border-bottom-color: var(--accent); font-weight: 600; }
+nav.tabs button:hover:not(.active) { color: var(--ink); }
+
+main { padding: 16px 24px; max-width: 1500px; }
+section.tab { display: none; }
+section.tab.active { display: block; }
+
+.filters { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; align-items: center; }
+.filters input, .filters select {
+  font: inherit; padding: 6px 10px; border: 1px solid var(--line);
+  background: var(--panel); border-radius: 4px;
+}
+.filters input.search { width: 280px; }
+.filters .count { color: var(--muted); font-size: 13px; margin-left: auto; }
+
+table { width: 100%; border-collapse: collapse; background: var(--panel); border-radius: 6px; overflow: hidden; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; font-size: 14px; }
+table td:first-child, table th:first-child { white-space: nowrap; font-variant-numeric: tabular-nums; }
+th { background: #f3f1ea; font-weight: 600; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; user-select: none; }
+th:hover { color: var(--ink); }
+tbody tr { cursor: pointer; }
+tbody tr:hover { background: #fbf9f3; }
+
+.pill { display: inline-block; padding: 1px 7px; border-radius: 10px; background: var(--pill); font-size: 12px; color: var(--muted); margin-right: 4px; white-space: nowrap; }
+.pill.bucket-public-safety { background: #fae0d8; color: #8a3320; }
+.pill.bucket-governance { background: #e2eaf5; color: #2c4870; }
+.pill.bucket-politics { background: #ecdef0; color: #5d2e6b; }
+.pill.bucket-housing { background: #fde8c4; color: #8c5a13; }
+.pill.bucket-transportation { background: #d8eed8; color: #2f6b2f; }
+.pill.bucket-culture { background: #f0e0e8; color: #6b3057; }
+.pill.bucket-data { background: #dfe5d9; color: #4a5c3b; }
+.pill.bucket-series { background: #e5e3dd; color: #555; }
+.pill.bucket-health { background: #d8eaef; color: #2a5e6a; }
+.pill.bucket-education { background: #f0e7c4; color: #6e5310; }
+.pill.bucket-economy { background: #e8e0f0; color: #4c3a6e; }
+.pill.bucket-immigration { background: #e0eef0; color: #2c5e6a; }
+.pill.bucket-race { background: #f0d9d9; color: #6e2e2e; }
+.pill.bucket-climate { background: #d3ebcf; color: #2b6a2c; }
+.pill.bucket-other { background: #e5e3dd; color: #777; }
+.pill.status-adopted { background: #ccebcc; color: #1e5a1e; }
+.pill.status-proposed { background: #ffe2b8; color: #7c5215; }
+.pill.status-rejected { background: #e8d4d4; color: #6e3232; }
+.pill.status-discussed { background: #d9e6f0; color: #2c4870; }
+.pill.status-none { background: var(--pill); color: var(--muted); }
+.pill.status-unreviewed { background: #f4dfd7; color: #8a3320; }
+.pill.policy-yes { background: var(--accent-soft); color: var(--accent); }
+.score { display: inline-block; min-width: 22px; text-align: center; padding: 2px 4px; border-radius: 4px; font-weight: 600; font-size: 12px; cursor: help; font-variant-numeric: tabular-nums; }
+.score-0 { background: #eee; color: #888; }
+.score-1 { background: #f0e6e0; color: #7a5a3f; }
+.score-2 { background: #f5d8c8; color: #75412a; }
+.score-3 { background: #f0bda5; color: #6f2913; }
+.score-4 { background: #db7d5f; color: #fff; }
+.score-5 { background: var(--accent); color: #fff; }
+.score-empty { color: #ccc; font-size: 12px; }
+
+#detail-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.4);
+  display: none; align-items: flex-start; justify-content: center;
+  padding: 40px 20px; z-index: 100; overflow: auto;
+}
+#detail-overlay.open { display: flex; }
+#detail-panel {
+  background: var(--panel); border-radius: 8px;
+  max-width: 720px; width: 100%; padding: 24px; position: relative;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.2);
+}
+#detail-panel .close {
+  position: absolute; top: 12px; right: 16px;
+  background: none; border: none; font-size: 24px; cursor: pointer; color: var(--muted);
+}
+#detail-panel h2 { margin: 0 0 8px; font-size: 22px; }
+#detail-panel .meta { color: var(--muted); font-size: 13px; margin-bottom: 16px; }
+#detail-panel .meta.wrap { white-space: normal; overflow-wrap: anywhere; }
+#detail-panel .section { margin: 16px 0; padding-top: 12px; border-top: 1px solid var(--line); }
+#detail-panel .section h3 { font-size: 13px; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; letter-spacing: 0.05em; }
+#detail-panel .empty { color: var(--muted); font-style: italic; font-size: 13px; }
+#detail-panel .excerpt { font-size: 14px; line-height: 1.5; }
+#detail-panel dl { margin: 0; }
+#detail-panel dl dt { color: var(--muted); font-size: 12px; margin-top: 8px; }
+#detail-panel dl dd { margin: 2px 0 0 0; font-size: 14px; }
+#detail-panel .edit-hint {
+  margin-top: 16px; padding: 12px; background: #fbf6ea; border-radius: 4px;
+  font-size: 12px; color: var(--muted); font-family: ui-monospace, monospace;
+}
+
+#chart { height: 540px; background: var(--panel); border-radius: 6px; padding: 8px; }
+.chart-controls { margin-bottom: 12px; }
+.chart-controls label { margin-right: 16px; font-size: 13px; }
+
+.author-grid { background: var(--panel); border-radius: 6px; overflow: hidden; }
+.author-header {
+  display: grid;
+  grid-template-columns: minmax(180px, 240px) 70px 1fr;
+  gap: 16px;
+  padding: 8px 14px;
+  background: #f3f1ea;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  font-weight: 600;
+  border-bottom: 1px solid var(--line);
+}
+.author-header .sort-h { cursor: pointer; user-select: none; }
+.author-header .sort-h:hover { color: var(--ink); }
+.author-header .sort-h.active { color: var(--ink); }
+.author-header .sort-h.active::after { content: " ↓"; }
+.author-header .sort-h.active.asc::after { content: " ↑"; }
+.author-card {
+  display: grid;
+  grid-template-columns: minmax(180px, 240px) 70px 1fr;
+  gap: 16px;
+  align-items: start;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+  cursor: pointer;
+}
+.author-card:last-child { border-bottom: none; }
+.author-card:hover { background: #fbf9f3; }
+.author-card .name { font-weight: 600; font-size: 14px; line-height: 1.25; }
+.author-card .meta { color: var(--muted); font-size: 11px; line-height: 1.3; margin-top: 2px; }
+.author-card .count { font-variant-numeric: tabular-nums; font-size: 13px; color: var(--ink); padding-top: 1px; }
+.author-card .count .lbl { color: var(--muted); font-size: 11px; }
+.author-card .dist .blocks { display: flex; flex-wrap: wrap; gap: 1px; align-items: center; margin-bottom: 4px; }
+.author-card .dist .blocks .blk { width: 8px; height: 14px; border-radius: 1px; }
+.author-card .dist .legend { font-size: 11px; line-height: 1.45; }
+.author-card .dist .legend span.entry { margin-right: 12px; white-space: nowrap; }
+.author-card .dist .legend .num { color: var(--muted); margin-left: 2px; font-variant-numeric: tabular-nums; }
+
+.topic-color-public-safety { color: #8a3320; }
+.topic-color-governance { color: #2c4870; }
+.topic-color-politics { color: #5d2e6b; }
+.topic-color-housing { color: #8c5a13; }
+.topic-color-transportation { color: #2f6b2f; }
+.topic-color-culture { color: #6b3057; }
+.topic-color-data { color: #4a5c3b; }
+.topic-color-series { color: #555; }
+.topic-color-health { color: #2a5e6a; }
+.topic-color-education { color: #6e5310; }
+.topic-color-economy { color: #4c3a6e; }
+.topic-color-immigration { color: #2c5e6a; }
+.topic-color-race { color: #6e2e2e; }
+.topic-color-climate { color: #2b6a2c; }
+.topic-color-other { color: #777; }
+.topic-bg-public-safety { background: #8a3320; }
+.topic-bg-governance { background: #2c4870; }
+.topic-bg-politics { background: #5d2e6b; }
+.topic-bg-housing { background: #8c5a13; }
+.topic-bg-transportation { background: #2f6b2f; }
+.topic-bg-culture { background: #6b3057; }
+.topic-bg-data { background: #4a5c3b; }
+.topic-bg-series { background: #777; }
+.topic-bg-health { background: #2a5e6a; }
+.topic-bg-education { background: #6e5310; }
+.topic-bg-economy { background: #4c3a6e; }
+.topic-bg-immigration { background: #2c5e6a; }
+.topic-bg-race { background: #6e2e2e; }
+.topic-bg-climate { background: #2b6a2c; }
+.topic-bg-other { background: #aaa; }
+
+.inline-toggle { display: inline-block; font-size: 12px; color: var(--muted); margin-bottom: 8px; cursor: pointer; }
+.inline-toggle input { margin-right: 4px; vertical-align: middle; }
+.author-articles { margin-top: 4px; max-height: 60vh; overflow-y: auto; }
+.author-articles .item { display: flex; gap: 10px; padding: 6px 0; border-bottom: 1px solid var(--line); font-size: 13px; align-items: baseline; }
+.author-articles .item:last-child { border-bottom: none; }
+.author-articles .date { color: var(--muted); font-size: 11px; flex: 0 0 60px; font-variant-numeric: tabular-nums; }
+.author-articles .type-slot { flex: 0 0 90px; text-align: left; }
+.author-articles .title { flex: 1; min-width: 0; }
+.author-articles .tags { flex: 0 0 auto; text-align: right; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 2px; max-width: 45%; }
+.pill.type-pill { background: #2c4870; color: #fff; font-weight: 500; }
+
+.empty-state { padding: 32px; background: var(--panel); border-radius: 6px; color: var(--muted); text-align: center; }
+.policy-controls { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 16px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Vital City Coverage Tracker</h1>
+  <div class="stat"><strong id="hdr-count">—</strong> articles</div>
+  <div class="stat"><strong id="hdr-range">—</strong></div>
+  <div class="stat"><strong id="hdr-authors">—</strong> distinct authors</div>
+  <div class="stat"><strong id="hdr-tracked">—</strong> policy-tracked</div>
+</header>
+
+<nav class="tabs">
+  <button data-tab="articles" class="active">Articles</button>
+  <button data-tab="topics">Years</button>
+  <button data-tab="authors">Authors</button>
+  <button data-tab="policy">Policy tracker</button>
+  <button data-tab="review">Review queue</button>
+</nav>
+
+<main>
+
+<section class="tab active" id="tab-articles">
+  <div class="filters">
+    <input type="text" class="search" id="art-search" placeholder="Search title, author, excerpt…">
+    <select id="art-year"><option value="">All years</option></select>
+    <select id="art-bucket"><option value="">All domains</option></select>
+    <select id="art-author"><option value="">All authors</option></select>
+    <select id="art-type"><option value="">All article types</option></select>
+    <select id="art-score">
+      <option value="">Any AI score</option>
+      <option value="5">Score ≥ 5</option>
+      <option value="4">Score ≥ 4</option>
+      <option value="3">Score ≥ 3</option>
+      <option value="2">Score ≥ 2</option>
+      <option value="1">Score ≥ 1</option>
+    </select>
+    <select id="art-policy">
+      <option value="">All policy states</option>
+      <option value="unreviewed">Unreviewed</option>
+      <option value="yes">Has recommendation</option>
+      <option value="partial">Partial</option>
+      <option value="no">No recommendation</option>
+      <option value="interview-only">Interview-only</option>
+    </select>
+    <span class="count" id="art-count"></span>
+  </div>
+  <table id="art-table">
+    <thead><tr>
+      <th data-sort="published_at">Date</th>
+      <th data-sort="title">Title</th>
+      <th data-sort="primary_author_last">Author</th>
+      <th data-sort="article_type">Type</th>
+      <th data-sort="bucket">Domains</th>
+      <th data-sort="word_count">Words</th>
+      <th data-sort="score">AI</th>
+      <th data-sort="policy">Policy</th>
+    </tr></thead>
+    <tbody></tbody>
+  </table>
+</section>
+
+<section class="tab" id="tab-topics">
+  <div class="chart-controls">
+    <label><input type="radio" name="chart-mode" value="counts" checked> Article counts</label>
+    <label><input type="radio" name="chart-mode" value="share"> Share of year (%)</label>
+    <label><input type="radio" name="chart-mode" value="heatmap"> Heatmap</label>
+  </div>
+  <div id="chart"></div>
+</section>
+
+<section class="tab" id="tab-authors">
+  <div class="filters">
+    <input type="text" class="search" id="aut-search" placeholder="Search author or institution…">
+    <select id="aut-profession"><option value="">All professions</option></select>
+    <select id="aut-nyc"><option value="">NYC-based?</option><option value="yes">NYC</option><option value="no">Outside</option><option value="unknown">Unknown</option></select>
+    <label class="inline-toggle"><input type="checkbox" id="aut-articles-only"> Articles only</label>
+    <span class="count" id="aut-count"></span>
+  </div>
+  <div class="author-grid">
+    <div class="author-header">
+      <div data-sort="last_name" class="sort-h">Author</div>
+      <div data-sort="count" class="sort-h">Bylines</div>
+      <div>Domain distribution</div>
+    </div>
+    <div id="aut-grid"></div>
+  </div>
+</section>
+
+<section class="tab" id="tab-policy">
+  <div class="policy-controls">
+    <select id="pol-agency"><option value="">All agencies</option></select>
+    <select id="pol-status"><option value="">All action statuses</option></select>
+    <select id="pol-lever"><option value="">All levers</option></select>
+    <span class="count" id="pol-count"></span>
+  </div>
+  <table id="pol-table">
+    <thead><tr>
+      <th>Date</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Recommendation</th>
+      <th>Agencies</th>
+      <th>Action status</th>
+    </tr></thead>
+    <tbody></tbody>
+  </table>
+</section>
+
+<section class="tab" id="tab-review">
+  <p style="color:var(--muted); font-size:13px;">Articles you haven't yet looked at for policy content. Edit <code>policy_tracking.csv</code> at the project root to set <code>has_policy_rec</code> to <code>yes</code>, <code>no</code>, <code>partial</code>, or <code>interview-only</code>; the next dashboard build will move them off this list.</p>
+  <div class="filters">
+    <select id="rev-bucket"><option value="">All buckets</option></select>
+    <span class="count" id="rev-count"></span>
+  </div>
+  <table id="rev-table">
+    <thead><tr>
+      <th>Date</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Buckets</th>
+      <th>Agencies detected in text</th>
+    </tr></thead>
+    <tbody></tbody>
+  </table>
+</section>
+
+</main>
+
+<div id="detail-overlay"><div id="detail-panel">
+  <button class="close" onclick="closeDetail()">&times;</button>
+  <div id="detail-body"></div>
+</div></div>
+
+<script>
+const BUCKET_CLASS = {
+  "Public Safety": "public-safety",
+  "Governance": "governance",
+  "Politics": "politics",
+  "Housing": "housing",
+  "Transit": "transportation",
+  "Culture": "culture",
+  "Data": "data",
+  "Health & human services": "health",
+  "Youth": "education",
+  "Economy": "economy",
+  "Immigration": "immigration",
+  "Race": "race",
+  "Climate": "climate",
+  "Other": "other",
+};
+// Hex colors matching the .topic-bg-* CSS classes — used by the Years chart
+// so its palette is coordinated with the pills used everywhere else.
+const BUCKET_COLOR = {
+  "Public Safety": "#8a3320",
+  "Governance": "#2c4870",
+  "Politics": "#5d2e6b",
+  "Housing": "#8c5a13",
+  "Transit": "#2f6b2f",
+  "Culture": "#6b3057",
+  "Data": "#4a5c3b",
+  "Health & human services": "#2a5e6a",
+  "Youth": "#6e5310",
+  "Economy": "#4c3a6e",
+  "Immigration": "#2c5e6a",
+  "Race": "#6e2e2e",
+  "Climate": "#2b6a2c",
+  "Other": "#aaa",
+};
+const BUCKET_ORDER = Object.keys(BUCKET_CLASS);
+
+let ARTICLES = [], POLICY = {}, AUTHORS = [], SUMMARY = {}, SCORES = {};
+let SORT_KEY = "published_at", SORT_DIR = -1;
+
+function bucketPill(b) {
+  return `<span class="pill bucket-${BUCKET_CLASS[b] || "other"}">${b.replace(" / ", "/")}</span>`;
+}
+
+function fmtDate(s) {
+  // "2026-04-08" or "2026-04-08T20:23:54" -> "4/8/26"
+  if (!s) return "";
+  const m = String(s).match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (!m) return s;
+  return `${+m[2]}/${+m[3]}/${m[1].slice(2)}`;
+}
+
+const SURNAME_PARTICLES = new Set(["de","del","della","der","den","di","da","du","van","von","vom","zu","le","la","ten","ter","bin","ibn","al","el"]);
+function lastNameKey(name) {
+  if (!name) return "zzzz";
+  if (name === "No byline") return "zzzz";
+  const parts = name.replace(",", " ").trim().split(/\s+/);
+  if (parts.length === 0) return name.toLowerCase();
+  if (parts.length >= 3 && SURNAME_PARTICLES.has(parts[parts.length-2].toLowerCase())) {
+    return (parts[parts.length-2] + " " + parts[parts.length-1]).toLowerCase();
+  }
+  return parts[parts.length-1].toLowerCase();
+}
+
+async function loadData() {
+  const [arts, pol, auts, sum, scores] = await Promise.all([
+    fetch("data/articles.json").then(r => r.json()),
+    fetch("data/policy_tracking.json").then(r => r.json()),
+    fetch("data/authors.json").then(r => r.json()),
+    fetch("data/build_summary.json").then(r => r.json()),
+    fetch("data/policy_scores.json").then(r => r.ok ? r.json() : {}).catch(() => ({})),
+  ]);
+  ARTICLES = arts;
+  POLICY = pol;
+  AUTHORS = auts;
+  SUMMARY = sum;
+  SCORES = scores;
+  renderHeader();
+  populateFilters();
+  renderArticles();
+  renderAuthors();
+  renderPolicy();
+  renderReview();
+  renderChart();
+}
+
+function renderHeader() {
+  document.getElementById("hdr-count").textContent = ARTICLES.length.toLocaleString();
+  const r = SUMMARY.date_range;
+  if (r) document.getElementById("hdr-range").textContent = fmtDate(r[0]) + " → " + fmtDate(r[1]);
+  document.getElementById("hdr-authors").textContent = AUTHORS.length || new Set(ARTICLES.map(a => a.primary_author)).size;
+  const tracked = Object.values(POLICY).filter(p =>
+    p.has_policy_rec && p.has_policy_rec !== "unreviewed" && p.has_policy_rec !== "no"
+  ).length;
+  document.getElementById("hdr-tracked").textContent = tracked;
+}
+
+function populateFilters() {
+  const years = Array.from(new Set(ARTICLES.map(a => a.year).filter(Boolean))).sort((a,b)=>b-a);
+  fillSelect("art-year", years);
+  fillSelect("art-bucket", BUCKET_ORDER);
+  fillSelect("rev-bucket", BUCKET_ORDER);
+  const authors = Array.from(new Set(ARTICLES.map(a => a.primary_author).filter(Boolean)))
+    .sort((a, b) => lastNameKey(a).localeCompare(lastNameKey(b)));
+  fillSelect("art-author", authors);
+  const types = Array.from(new Set(ARTICLES.map(a => a.article_type).filter(Boolean))).sort();
+  fillSelect("art-type", types);
+  const agencies = new Set();
+  ARTICLES.forEach(a => (a.agencies || []).forEach(ag => agencies.add(ag.name)));
+  fillSelect("pol-agency", Array.from(agencies).sort());
+  const statuses = ["none","discussed","proposed","adopted","rejected","abandoned"];
+  fillSelect("pol-status", statuses);
+  fillSelect("pol-lever", ["legislation","regulation","budget","executive","internal","culture"]);
+  const profs = Array.from(new Set(AUTHORS.map(a => a.current_profession).filter(Boolean))).sort();
+  fillSelect("aut-profession", profs);
+}
+
+function fillSelect(id, opts) {
+  const sel = document.getElementById(id);
+  if (!sel) return;
+  opts.forEach(o => {
+    const el = document.createElement("option");
+    el.value = o; el.textContent = o; sel.appendChild(el);
+  });
+}
+
+// ============ Articles tab ============
+function articleFilter() {
+  const q = document.getElementById("art-search").value.toLowerCase();
+  const year = document.getElementById("art-year").value;
+  const bucket = document.getElementById("art-bucket").value;
+  const author = document.getElementById("art-author").value;
+  const type = document.getElementById("art-type").value;
+  const minScore = document.getElementById("art-score").value;
+  const policy = document.getElementById("art-policy").value;
+  return ARTICLES.filter(a => {
+    if (year && String(a.year) !== year) return false;
+    if (bucket && !(a.buckets || []).includes(bucket)) return false;
+    if (author && a.primary_author !== author) return false;
+    if (type && a.article_type !== type) return false;
+    if (minScore) {
+      const s = SCORES[a.slug];
+      if (!s || Number(s.score) < Number(minScore)) return false;
+    }
+    if (policy) {
+      const p = POLICY[a.slug];
+      const v = (p && p.has_policy_rec) || "unreviewed";
+      if (v !== policy) return false;
+    }
+    if (q) {
+      const blob = (a.title + " " + a.primary_author + " " + (a.authors||[]).join(" ") + " " + (a.excerpt||"")).toLowerCase();
+      if (!blob.includes(q)) return false;
+    }
+    return true;
+  });
+}
+
+function renderArticles() {
+  let rows = articleFilter();
+  rows.sort((a, b) => {
+    let av, bv;
+    if (SORT_KEY === "bucket") { av = (a.buckets||[])[0] || ""; bv = (b.buckets||[])[0] || ""; }
+    else if (SORT_KEY === "policy") {
+      av = (POLICY[a.slug] || {}).has_policy_rec || "unreviewed";
+      bv = (POLICY[b.slug] || {}).has_policy_rec || "unreviewed";
+    }
+    else if (SORT_KEY === "score") {
+      av = Number((SCORES[a.slug] || {}).score || -1);
+      bv = Number((SCORES[b.slug] || {}).score || -1);
+    }
+    else { av = a[SORT_KEY] || ""; bv = b[SORT_KEY] || ""; }
+    return (av < bv ? -1 : av > bv ? 1 : 0) * SORT_DIR;
+  });
+  document.getElementById("art-count").textContent = rows.length + " of " + ARTICLES.length;
+  const tbody = document.querySelector("#art-table tbody");
+  tbody.innerHTML = rows.slice(0, 500).map(a => {
+    const p = POLICY[a.slug] || {};
+    const policy = p.has_policy_rec || "unreviewed";
+    const policyPill = policy === "yes" || policy === "partial"
+      ? `<span class="pill policy-yes">${policy}</span>`
+      : `<span class="pill status-${policy}">${policy}</span>`;
+    const buckets = (a.buckets||[]).map(bucketPill).join("");
+    const typePill = a.article_type && a.article_type !== "article"
+      ? `<span class="pill">${a.article_type.replace(/_/g," ")}</span>` : "";
+    const sc = SCORES[a.slug];
+    const scoreCell = sc
+      ? `<span class="score score-${sc.score}" title="${escapeHtml(sc.rationale || '')}">${sc.score}</span>`
+      : `<span class="score-empty">—</span>`;
+    return `<tr data-slug="${a.slug}">
+      <td>${fmtDate(a.published_at)}</td>
+      <td><a class="title-link" href="${a.url}" target="_blank" rel="noopener">${escapeHtml(a.title)}</a></td>
+      <td>${escapeHtml(a.primary_author||"")}</td>
+      <td>${typePill}</td>
+      <td>${buckets}</td>
+      <td>${(a.word_count || 0).toLocaleString()}</td>
+      <td>${scoreCell}</td>
+      <td>${policyPill}</td>
+    </tr>`;
+  }).join("");
+  if (rows.length > 500) {
+    tbody.innerHTML += `<tr><td colspan="8" style="text-align:center; color:var(--muted); padding:16px;">Showing first 500. Refine filters to see more.</td></tr>`;
+  }
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+}
+
+// ============ Chart ============
+function renderChart() {
+  const mode = document.querySelector("input[name='chart-mode']:checked").value;
+  const byYear = SUMMARY.bucket_by_year || {};
+  const years = Array.from(new Set(
+    Object.values(byYear).flatMap(o => Object.keys(o).map(Number))
+  )).sort();
+  if (mode === "heatmap") {
+    const z = BUCKET_ORDER.map(b => years.map(y => (byYear[b]||{})[y] || 0));
+    Plotly.newPlot("chart", [{
+      z, x: years, y: BUCKET_ORDER, type: "heatmap",
+      colorscale: [[0,"#fafaf7"],[0.5,"#e8d4c7"],[1,"#8a3320"]],
+      hovertemplate: "%{y}<br>%{x}: %{z} articles<extra></extra>",
+    }], {
+      margin: { l: 240, r: 20, t: 20, b: 40 },
+      paper_bgcolor: "#fafaf7", plot_bgcolor: "#fafaf7",
+      font: { family: "system-ui", size: 12 },
+    }, { responsive: true });
+    return;
+  }
+  let yearTotals = {};
+  if (mode === "share") {
+    years.forEach(y => yearTotals[y] = BUCKET_ORDER.reduce((s,b)=>s+((byYear[b]||{})[y]||0),0));
+  }
+  const traces = BUCKET_ORDER.map(b => ({
+    x: years,
+    y: years.map(y => {
+      const c = (byYear[b]||{})[y] || 0;
+      return mode === "share" ? (yearTotals[y] ? c*100/yearTotals[y] : 0) : c;
+    }),
+    name: b,
+    type: "bar",
+    marker: { color: BUCKET_COLOR[b] || "#aaa" },
+    hovertemplate: `<b>${b}</b><br>%{x}: %{y${mode==="share"?":.1f}":""}${mode==="share"?"%":""}<extra></extra>`,
+  }));
+  Plotly.newPlot("chart", traces, {
+    barmode: "stack",
+    margin: { l: 60, r: 20, t: 20, b: 40 },
+    paper_bgcolor: "#fafaf7", plot_bgcolor: "#fafaf7",
+    yaxis: { title: mode === "share" ? "% of articles" : "Articles" },
+    legend: { orientation: "v" },
+    font: { family: "system-ui", size: 12 },
+  }, { responsive: true });
+}
+
+// ============ Authors tab ============
+let AUTHOR_ARTICLES = {};      // computed once on first render
+let AUTHOR_META = {};
+function buildAuthorIndex() {
+  AUTHOR_ARTICLES = {};
+  ARTICLES.forEach(a => {
+    const names = (a.authors && a.authors.length) ? a.authors : [a.primary_author];
+    names.forEach(n => {
+      if (!n) return;
+      if (!AUTHOR_ARTICLES[n]) AUTHOR_ARTICLES[n] = [];
+      AUTHOR_ARTICLES[n].push(a);
+    });
+  });
+  AUTHOR_META = Object.fromEntries(AUTHORS.map(a => [a.author, a]));
+}
+
+let AUTHOR_SORT = { key: "last_name", dir: 1 };  // dir 1=asc, -1=desc
+function renderAuthors() {
+  if (!Object.keys(AUTHOR_ARTICLES).length) buildAuthorIndex();
+  const q = document.getElementById("aut-search").value.toLowerCase();
+  const prof = document.getElementById("aut-profession").value;
+  const nyc = document.getElementById("aut-nyc").value;
+  const articlesOnly = document.getElementById("aut-articles-only").checked;
+
+  // When the toggle is on, every author's effective set is just their bylined
+  // articles. Authors with zero remaining pieces drop off the list.
+  const effective = {};
+  Object.keys(AUTHOR_ARTICLES).forEach(name => {
+    const arts = articlesOnly
+      ? AUTHOR_ARTICLES[name].filter(a => a.article_type === "article")
+      : AUTHOR_ARTICLES[name];
+    if (arts.length) effective[name] = arts;
+  });
+
+  const names = Object.keys(effective);
+  const filtered = names.filter(n => {
+    const meta = AUTHOR_META[n] || {};
+    if (prof && meta.current_profession !== prof) return false;
+    if (nyc && (meta.nyc_based || "unknown") !== nyc) return false;
+    if (q && !(n + " " + (meta.current_employer||"") + " " + (meta.current_profession||"")).toLowerCase().includes(q)) return false;
+    return true;
+  });
+  filtered.sort((a, b) => {
+    if (AUTHOR_SORT.key === "count") {
+      return (effective[a].length - effective[b].length) * AUTHOR_SORT.dir;
+    }
+    return lastNameKey(a).localeCompare(lastNameKey(b)) * AUTHOR_SORT.dir;
+  });
+
+  document.getElementById("aut-count").textContent = filtered.length + " of " + names.length;
+  document.getElementById("aut-grid").innerHTML = filtered.map(n => renderAuthorCard(n, effective[n])).join("");
+  document.querySelectorAll(".author-header .sort-h").forEach(el => {
+    el.classList.toggle("active", el.dataset.sort === AUTHOR_SORT.key);
+    el.classList.toggle("asc", AUTHOR_SORT.dir === 1);
+  });
+}
+
+function primaryBucket(a) {
+  return (a.buckets && a.buckets[0]) || "Other / unclassified";
+}
+
+function renderAuthorCard(name, artsOverride) {
+  const meta = AUTHOR_META[name] || {};
+  const arts = artsOverride || AUTHOR_ARTICLES[name];
+  // One square per byline. Color = primary bucket (= buckets[0], which derives
+  // from Ghost's primary tag). No double-counting.
+  const counts = new Map();
+  arts.forEach(a => {
+    const b = primaryBucket(a);
+    counts.set(b, (counts.get(b)||0)+1);
+  });
+  const ordered = Array.from(counts.entries()).sort((a, b) => b[1] - a[1]);
+  // Render blocks grouped by bucket, in descending order, so they read as a
+  // proportional unit chart even at small sizes.
+  const blocks = ordered.map(([b, c]) => {
+    const cls = BUCKET_CLASS[b] || "other";
+    return Array(c).fill(0).map(() => `<span class="blk topic-bg-${cls}"></span>`).join("");
+  }).join("");
+  const legend = ordered.map(([b, _c]) => {
+    const cls = BUCKET_CLASS[b] || "other";
+    return `<span class="entry topic-color-${cls}">${escapeHtml(b)}</span>`;
+  }).join("");
+  const metaParts = [];
+  metaParts.push(meta.current_profession || (name === "No byline" ? "institutional" : "unclassified"));
+  if (meta.current_employer) metaParts.push(meta.current_employer);
+  if (meta.nyc_based === "yes") metaParts.push("NYC");
+  return `<div class="author-card" data-author="${escapeHtml(name)}">
+    <div>
+      <div class="name">${escapeHtml(name)}</div>
+      <div class="meta">${escapeHtml(metaParts.join(" · "))}</div>
+    </div>
+    <div class="count">${arts.length}<span class="lbl"> byline${arts.length===1?"":"s"}</span></div>
+    <div class="dist">
+      <div class="blocks">${blocks}</div>
+      <div class="legend">${legend}</div>
+    </div>
+  </div>`;
+}
+
+let AUTHOR_DETAIL_FILTER = { name: null, articlesOnly: false };
+function openAuthorDetail(name) {
+  AUTHOR_DETAIL_FILTER = { name, articlesOnly: false };
+  renderAuthorDetail();
+  document.getElementById("detail-overlay").classList.add("open");
+}
+function renderAuthorDetail() {
+  const name = AUTHOR_DETAIL_FILTER.name;
+  if (!name) return;
+  const arts = AUTHOR_ARTICLES[name] || [];
+  const meta = AUTHOR_META[name] || {};
+  const articlesOnly = AUTHOR_DETAIL_FILTER.articlesOnly;
+  const visible = arts.filter(a => articlesOnly ? a.article_type === "article" : true);
+  const items = visible.slice().sort((a, b) => (b.published_at || "").localeCompare(a.published_at || ""));
+  const items_html = items.map(a => {
+    const tags = (a.buckets || []).map(b =>
+      `<span class="pill bucket-${BUCKET_CLASS[b] || "other"}">${escapeHtml(b)}</span>`
+    ).join("");
+    const typeTag = a.article_type && a.article_type !== "article"
+      ? `<span class="pill type-pill">${a.article_type.replace(/_/g," ")}</span>` : "";
+    return `<div class="item">
+      <span class="date">${fmtDate(a.published_at)}</span>
+      <span class="type-slot">${typeTag}</span>
+      <span class="title"><a class="title-link" href="${a.url}" target="_blank" rel="noopener">${escapeHtml(a.title)}</a></span>
+      <span class="tags">${tags}</span>
+    </div>`;
+  }).join("");
+  const metaLine = [
+    meta.current_profession || (name === "No byline" ? "institutional" : "unclassified"),
+    meta.current_employer || "",
+    meta.nyc_based === "yes" ? "NYC-based" : (meta.nyc_based === "no" ? "outside NYC" : ""),
+  ].filter(Boolean).join(" · ");
+  const nonArt = arts.length - arts.filter(a => a.article_type === "article").length;
+  const toggle = nonArt > 0
+    ? `<label class="inline-toggle"><input type="checkbox" id="auth-articles-only" ${articlesOnly?"checked":""}> Articles only</label>`
+    : "";
+  document.getElementById("detail-body").innerHTML = `
+    <h2>${escapeHtml(name)}</h2>
+    <div class="meta wrap">${escapeHtml(metaLine)}</div>
+    <div class="section">
+      <h3>Links (${visible.length}${visible.length !== arts.length ? ` of ${arts.length}` : ""})</h3>
+      ${toggle}
+      <div class="author-articles">${items_html || '<span class="empty">none in current filter</span>'}</div>
+    </div>
+  `;
+  const cb = document.getElementById("auth-articles-only");
+  if (cb) cb.onchange = () => {
+    AUTHOR_DETAIL_FILTER.articlesOnly = cb.checked;
+    renderAuthorDetail();
+  };
+}
+
+// ============ Policy tracker tab ============
+function renderPolicy() {
+  const agency = document.getElementById("pol-agency").value;
+  const status = document.getElementById("pol-status").value;
+  const lever = document.getElementById("pol-lever").value;
+  const slugs = Object.keys(POLICY).filter(s => {
+    const p = POLICY[s];
+    const v = p.has_policy_rec;
+    if (!v || v === "unreviewed" || v === "no") return false;
+    if (agency && !(p.agencies||"").split(/;\s*/).includes(agency)) return false;
+    if (status && p.action_status !== status) return false;
+    if (lever && !(p.levers||"").split(/;\s*/).includes(lever)) return false;
+    return true;
+  });
+  const articleBySlug = Object.fromEntries(ARTICLES.map(a => [a.slug, a]));
+  slugs.sort((a,b) => (POLICY[b].published_at||"").localeCompare(POLICY[a].published_at||""));
+  document.getElementById("pol-count").textContent = slugs.length + " tracked";
+  const tbody = document.querySelector("#pol-table tbody");
+  if (!slugs.length) {
+    tbody.innerHTML = `<tr><td colspan="6" class="empty-state">No policy-tracked articles yet. Edit <code>policy_tracking.csv</code> to add some.</td></tr>`;
+    return;
+  }
+  tbody.innerHTML = slugs.map(s => {
+    const p = POLICY[s];
+    const a = articleBySlug[s] || {};
+    const sp = p.action_status || "none";
+    return `<tr data-slug="${s}">
+      <td>${fmtDate(p.published_at)}</td>
+      <td><a href="${a.url||p.url||"#"}" target="_blank" rel="noopener">${escapeHtml(p.title)}</a></td>
+      <td>${escapeHtml(p.primary_author||"")}</td>
+      <td>${escapeHtml(p.rec_summary||"")}</td>
+      <td>${(p.agencies||"").split(/;\s*/).filter(Boolean).map(x=>`<span class="pill">${escapeHtml(x)}</span>`).join("")}</td>
+      <td><span class="pill status-${sp}">${sp}</span></td>
+    </tr>`;
+  }).join("");
+}
+
+// ============ Review queue tab ============
+function renderReview() {
+  const bucket = document.getElementById("rev-bucket").value;
+  const items = ARTICLES.filter(a => {
+    const p = POLICY[a.slug];
+    const v = (p && p.has_policy_rec) || "unreviewed";
+    if (v !== "unreviewed") return false;
+    if (bucket && !(a.buckets||[]).includes(bucket)) return false;
+    return true;
+  });
+  document.getElementById("rev-count").textContent = items.length + " unreviewed";
+  const tbody = document.querySelector("#rev-table tbody");
+  tbody.innerHTML = items.slice(0, 500).map(a => {
+    const ags = (a.agencies || []).slice(0, 5);
+    return `<tr data-slug="${a.slug}">
+      <td>${fmtDate(a.published_at)}</td>
+      <td><a href="${a.url}" target="_blank" rel="noopener">${escapeHtml(a.title)}</a></td>
+      <td>${escapeHtml(a.primary_author||"")}</td>
+      <td>${(a.buckets||[]).map(bucketPill).join("")}</td>
+      <td>${ags.map(x=>`<span class="pill">${escapeHtml(x.name)}</span>`).join("")}</td>
+    </tr>`;
+  }).join("");
+  if (items.length > 500) {
+    tbody.innerHTML += `<tr><td colspan="5" style="text-align:center; color:var(--muted); padding:16px;">Showing first 500. Refine to see more.</td></tr>`;
+  }
+}
+
+// ============ Detail overlay ============
+function openDetail(slug) {
+  const a = ARTICLES.find(x => x.slug === slug);
+  const p = POLICY[slug] || {};
+  if (!a) return;
+  const buckets = (a.buckets||[]).map(bucketPill).join("");
+  const agencies = (a.agencies||[]).map(ag =>
+    `<span class="pill" title="${ag.hits} mention${ag.hits===1?"":"s"}">${escapeHtml(ag.name)} <span style="color:var(--muted);font-size:10px;">${ag.hits}</span></span>`
+  ).join("");
+  const authors = (a.authors||[]).map(escapeHtml).join(", ");
+  const policy = p.has_policy_rec || "unreviewed";
+  document.getElementById("detail-body").innerHTML = `
+    <h2><a href="${a.url}" target="_blank" rel="noopener">${escapeHtml(a.title)}</a></h2>
+    <div class="meta">${fmtDate(a.published_at)} · ${authors} · ${a.reading_time||"?"} min · ${a.word_count||"?"} words</div>
+    <div class="section">
+      <h3>Buckets</h3>${buckets || '<span class="empty">none</span>'}
+    </div>
+    <div class="section">
+      <h3>Ghost tags (raw)</h3>${(a.tags||[]).map(t=>`<span class="pill">${escapeHtml(t)}</span>`).join("") || '<span class="empty">none</span>'}
+    </div>
+    <div class="section">
+      <h3>Agencies detected in text</h3>${agencies || '<span class="empty">none</span>'}
+    </div>
+    <div class="section">
+      <h3>Excerpt</h3>
+      <div class="excerpt">${escapeHtml(a.excerpt||"") || '<span class="empty">no excerpt</span>'}</div>
+    </div>
+    ${(() => {
+      const sc = SCORES[a.slug];
+      if (!sc) return "";
+      return `<div class="section">
+        <h3>AI policy score</h3>
+        <dl>
+          <dt>Score</dt><dd><span class="score score-${sc.score}">${sc.score}</span> · ${escapeHtml(sc.has_policy_rec || "")}</dd>
+          ${sc.policy_ask ? `<dt>Suggested ask</dt><dd>${escapeHtml(sc.policy_ask)}</dd>` : ""}
+          ${sc.target ? `<dt>Suggested target</dt><dd>${escapeHtml(sc.target)}</dd>` : ""}
+          ${sc.rationale ? `<dt>Rationale</dt><dd>${escapeHtml(sc.rationale)}</dd>` : ""}
+        </dl>
+      </div>`;
+    })()}
+    <div class="section">
+      <h3>Policy tracking</h3>
+      <dl>
+        <dt>Has policy recommendation</dt><dd><span class="pill status-${policy}">${policy}</span></dd>
+        ${p.rec_summary ? `<dt>Recommendation</dt><dd>${escapeHtml(p.rec_summary)}</dd>`:""}
+        ${p.agencies ? `<dt>Agencies (curated)</dt><dd>${escapeHtml(p.agencies)}</dd>`:""}
+        ${p.levers ? `<dt>Levers</dt><dd>${escapeHtml(p.levers)}</dd>`:""}
+        ${p.geographic_scope ? `<dt>Scope</dt><dd>${escapeHtml(p.geographic_scope)}</dd>`:""}
+        ${p.action_status ? `<dt>Action status</dt><dd><span class="pill status-${p.action_status}">${escapeHtml(p.action_status)}</span></dd>`:""}
+        ${p.action_evidence_urls ? `<dt>Evidence of action</dt><dd>${(p.action_evidence_urls||"").split(/;\s*/).filter(Boolean).map(u=>`<a href="${u}" target="_blank" rel="noopener">${escapeHtml(u)}</a>`).join("<br>")}</dd>`:""}
+        ${p.notes ? `<dt>Notes</dt><dd>${escapeHtml(p.notes)}</dd>`:""}
+        ${p.last_reviewed ? `<dt>Last reviewed</dt><dd>${escapeHtml(p.last_reviewed)}</dd>`:""}
+      </dl>
+      <div class="edit-hint">To edit, open <code>policy_tracking.csv</code> at the project root and find slug:<br><code>${escapeHtml(slug)}</code></div>
+    </div>
+  `;
+  document.getElementById("detail-overlay").classList.add("open");
+}
+function closeDetail() { document.getElementById("detail-overlay").classList.remove("open"); }
+
+// ============ Wire up ============
+document.querySelectorAll("nav.tabs button").forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll("nav.tabs button").forEach(x => x.classList.remove("active"));
+    document.querySelectorAll("section.tab").forEach(x => x.classList.remove("active"));
+    b.classList.add("active");
+    document.getElementById("tab-" + b.dataset.tab).classList.add("active");
+    if (b.dataset.tab === "topics") setTimeout(renderChart, 50);
+  };
+});
+document.querySelectorAll("input[name='chart-mode']").forEach(r => r.onchange = renderChart);
+document.getElementById("art-search").oninput = renderArticles;
+["art-year","art-bucket","art-author","art-type","art-score","art-policy"].forEach(id => document.getElementById(id).onchange = renderArticles);
+document.querySelectorAll("#art-table th").forEach(th => th.onclick = () => {
+  const k = th.dataset.sort;
+  if (k === SORT_KEY) SORT_DIR *= -1; else { SORT_KEY = k; SORT_DIR = -1; }
+  renderArticles();
+});
+document.getElementById("aut-search").oninput = renderAuthors;
+["aut-profession","aut-nyc","aut-articles-only"].forEach(id => document.getElementById(id).onchange = renderAuthors);
+document.querySelectorAll(".author-header .sort-h").forEach(el => {
+  el.onclick = () => {
+    const k = el.dataset.sort;
+    if (k === AUTHOR_SORT.key) AUTHOR_SORT.dir *= -1;
+    else { AUTHOR_SORT.key = k; AUTHOR_SORT.dir = 1; }
+    renderAuthors();
+  };
+});
+["pol-agency","pol-status","pol-lever"].forEach(id => document.getElementById(id).onchange = renderPolicy);
+document.getElementById("rev-bucket").onchange = renderReview;
+document.body.addEventListener("click", e => {
+  if (e.target.tagName === "A") return;
+  const tr = e.target.closest("tbody tr");
+  if (tr && tr.dataset.slug) { openDetail(tr.dataset.slug); return; }
+  const ac = e.target.closest(".author-card");
+  if (ac && ac.dataset.author) openAuthorDetail(ac.dataset.author);
+});
+document.getElementById("detail-overlay").addEventListener("click", e => {
+  if (e.target.id === "detail-overlay") closeDetail();
+});
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeDetail(); });
+
+loadData().catch(e => {
+  document.body.innerHTML = `<div style="padding:40px;font-family:monospace;">Couldn't load data: ${e}<br><br>Run <code>python update.py</code> first, then serve this folder with <code>python -m http.server</code>.</div>`;
+});
+</script>
+
+</body>
+</html>

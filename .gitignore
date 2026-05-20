@@ -1,0 +1,37 @@
+# Regenerable data — recreate with `python update.py`
+data/raw/
+data/processed/
+
+# Bundled processed text for the dashboard's full-text search is 8.9MB and
+# also regenerable; gitignore it to keep the repo lean. Anyone cloning who
+# wants the dashboard locally runs `python update.py --no-fetch` after
+# providing a Ghost API key or copy of the raw dump.
+site/data/articles_text.json
+
+# macOS Finder cache
+.DS_Store
+**/.DS_Store
+
+# Python noise
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.python-version
+
+# Editor noise
+.vscode/
+.idea/
+*.swp
+
+# Microsoft Office lock files (created when a .docx is open in Word)
+~$*
+
+# Local env vars (Anthropic API key etc.)
+.env
+.envrc
+
+# Generated scratch
+*.log
+/tmp/
