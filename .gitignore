@@ -6,7 +6,7 @@ data/processed/
 # also regenerable; gitignore it to keep the repo lean. Anyone cloning who
 # wants the dashboard locally runs `python update.py --no-fetch` after
 # providing a Ghost API key or copy of the raw dump.
-site/data/articles_text.json
+docs/data/articles_text.json
 
 # macOS Finder cache
 .DS_Store

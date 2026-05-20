@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Assemble the dashboard's data bundle into site/data/.
+"""Assemble the dashboard's data bundle into docs/data/.
 
 Reads:
 - data/processed/articles.json
@@ -8,7 +8,7 @@ Reads:
 - data/processed/vital_city_author_master.csv  (if present)
 - policy_tracking.csv
 
-Writes everything into site/data/ so the dashboard can fetch over plain
+Writes everything into docs/data/ so the dashboard can fetch over plain
 HTTP without crossing project root.
 """
 
@@ -24,7 +24,7 @@ ROOT = Path(__file__).resolve().parent.parent
 PROCESSED = ROOT / "data" / "processed"
 POLICY_CSV = ROOT / "policy_tracking.csv"
 POLICY_SCORES_CSV = PROCESSED / "policy_scores.csv"
-SITE_DATA = ROOT / "site" / "data"
+SITE_DATA = ROOT / "docs" / "data"
 
 
 def load_policy() -> dict[str, dict]:
@@ -90,7 +90,7 @@ def main() -> int:
         json.dumps(summary, ensure_ascii=False, separators=(",", ":"))
     )
 
-    print(f"site/data: {len(articles)} articles, "
+    print(f"docs/data: {len(articles)} articles, "
           f"{len(policy)} policy rows, {len(scores)} ai scores, "
           f"{len(authors)} authors")
     return 0

@@ -31,7 +31,7 @@ def main() -> int:
     run("build_articles.py")
     run("sync_policy_tracking.py")
     run("build_site.py")
-    print("\nDone. Serve with:  cd site && python -m http.server 8000")
+    print("\nDone. Serve with:  cd docs && python -m http.server 8000")
     return 0
 
 
