@@ -1,0 +1,552 @@
+slug,buckets,notes
+how-birth-cohort-affects-criminal-outcomes-robert-sampson,Criminal courts,bail/risk-assessment piece — about jail-bound decisions
+new-york-city-gun-violence-down-major-crime-high,Crime data,quantitative crime trends piece
+how-prevention-reduced-crime-suggestions-analysis,Public safety strategy,federal prevention investment grand strategy
+mamdani-public-safety-strategy-nyc,Public safety strategy,Mamdani public safety strategy
+crime-victims-can-help-point-the-way-forward,Crime data;Criminal courts,victim-survey + court-system piece
+trump-sanctuary-cities-funding,Immigration,federal immigration enforcement
+underground-gun-markets-urban-violence,Guns,gun trafficking
+guns-my-family-and-me,Guns,gun politics
+how-modern-bullets-maximize-lethality,Guns,ammo
+licensed-to-kill-concealed-carry-training-course,Guns,concealed carry
+the-case-against-futility-in-gun-regulation,Guns,gun regulation
+gun-culture-then-and-now,Guns,gun culture
+the-growth-of-the-firearm-industry,Guns,gun industry
+the-80-20-rule-of-gun-supply,Guns,gun supply
+the-money-behind-mass-shootings,Guns,mass shooting financing
+what-we-know-and-dont-know-about-guns,Guns,gun research
+the-good-gun-owner,Guns,gun owners
+illegal-parking-and-failed-governance-ai-study-of-nypd-enforcement,Policing,traffic-enforcement piece
+police-commissioner-jessica-tisch-vs-new-york-city-crime-and-corruption,Policing,Tisch profile
+the-fear-factor-civility-on-the-subway,Subway;Crime data,subway disorder (updated 2026-05-20)
+voting-rights-act-nyc-supreme-court,Politics,really a voting rights piece (not criminal courts)
+nypd-gang-database-shooting-reduction,Policing,about NYPD strategy not criminal courts
+how-civil-law-can-help-prevent-gun-tragedies,Guns,civil litigation about guns - not criminal courts
+eric-adams-trials-are-a-trial-for-new-yorkers,Politics,electoral context not criminal courts
+more-than-a-noble-gesture,Politics,political opinion piece not criminal courts
+have-public-sector-unions-taken-the-place-of-tammany-hall,Governance,public sector unions piece (could become own domain later)
+nyc-declining-murders-politics,Crime data;Politics,crime data + electoral politics
+what-the-data-show-about-subway-safety,Subway;Crime data,subway safety data
+safer-cities-in-context,Crime data,national crime trends
+a-nation-and-city-less-secure,Federal policy,federal national security (one-off)
+better-evidence-better-policy,Crime data;Research,research methodology piece
+how-rare-is-crime-on-the-subway,Subway;Crime data,subway crime statistics
+without-congestion-pricing-a-hollowed-out-subway-investment-plan,Cars,congestion pricing + subway funding
+the-golden-age-of-crime-reduction-is-now,Crime data;Public safety strategy,national crime reduction analysis
+what-brought-new-york-city-back-from-the-brink,Crime data;Policing,interview with practitioner about crime decline
+how-new-york-city-is-engaging-the-mentally-ill-underground,Crisis response;Subway,interview about subway crisis response
+incrementalism-beats-yolo,Public safety strategy,
+new-york-citys-subways-moving-millions,Subway;Crime data,
+challenges-around-every-bend-transit-workers-day-to-day,Subway,(also anthology type)
+underground-safer-than-the-surface,Subway;Crime data,
+saved-by-the-camera,Cars,
+the-lawless-state-of-new-yorks-streets,Cars;Policing,
+a-psychiatrist-explains-how-new-york-can-improve-the-care-of-the-mentally-ill-and-enhance-public-safety,Mental illness,
+times-square-good-times-square-bad,Disorder;Public space,(also book_review)
+when-buses-and-subways-were-free,Subway;Buses,strip over-tagging
+job-creation-and-upward-mobility-for-affordability-mamdani,Economy,
+is-new-york-broken,Other,personal reflection
+why-cant-we-solve-the-homelessness-crisis-in-new-york-city,Homelessness,
+is-it-possible-to-improve-nonprofit-design,Nonprofits,moved from Other
+how-should-we-pay-for-transportation-new-york-city,Subway;Buses,
+business-fears-real-and-imagined,Cars,
+law-enforcement-against-fentanyl,Drugs;Policing,
+when-we-ride-appreciating-the-subway,Subway,strip culture/governance over-tagging
+why-walkability-matters,Public space;Cars,walkability + parking pricing
+public-space-and-security,Public space,
+shifting-power-to-the-community-an-experiment-in-brownsville,Policing;Community violence intervention,Brownsville experiment
+radiator-steam-heat-history-nyc,Housing,utilities → housing catch-all
+how-seqra-slows-housing-development-new-york,Housing;Governance,SEQRA + zoning + env review
+mamdani-snow-emergency-response,Governance,snow response = governance/ops
+explained-what-is-involuntary-removal-outdoor-deaths-nyc,Homelessness;Mental illness,
+juvenile-justice-close-to-home-nyc-results,Youth,not Rikers - juvenile pathways
+unhoused-new-yorkers-randy-santos-mamdani,Homelessness,
+mamdani-parks-public-spaces-nyc,Public space,parks → public space not culture
+mamdani-city-run-grocery-stores-small-businesses-nyc,Economy;Governance,"AI-suggested, user-approved 2026-05-20"
+nyc-wooden-water-tanks-architecture-history,Other,"AI-suggested, user-approved 2026-05-20"
+public-sector-unions-city-politics,Governance,"AI-suggested, user-approved 2026-05-20"
+nyc-government-ai-accountability-discretion,Governance,"AI-suggested, user-approved 2026-05-20"
+new-yorkers-help-each-other-despite-stereotype,Subway;Homelessness,"AI-suggested, user-approved 2026-05-20"
+nyc-homeless-encampments-spending-81k,Homelessness,"AI-suggested, user-approved 2026-05-20"
+nyc-speed-cameras-road-safety-mamdani-policy,Cars,"AI-suggested, user-approved 2026-05-20"
+new-york-rent-stabilization-law-supreme-court-clash,Housing;Politics,"AI-suggested, user-approved 2026-05-20"
+navigating-apartment-hunting-rising-rent-in-nyc,Housing,"AI-suggested, user-approved 2026-05-20"
+mamdani-rent-freeze-nyc-rent-guidelines-board-explained,Housing,"AI-suggested, user-approved 2026-05-20"
+snow-complaints-staten-island-nyc,Governance,"AI-suggested, user-approved 2026-05-20"
+nyc-trash-removal-cost-mamdani,Housing;Economy,"AI-suggested, user-approved 2026-05-20"
+compstat-safestat-public-safety-nyc-mamdani,Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+mass-engagement-mamdani-nyc,Governance,"AI-suggested, user-approved 2026-05-20"
+zohran-mamdani-technology-innovation-new-york,Governance,"AI-suggested, user-approved 2026-05-20"
+free-observation-decks-new-york,Public space,"AI-suggested, user-approved 2026-05-20"
+minnesota-ice-alex-pretti-policing,Policing;Immigration,"AI-suggested, user-approved 2026-05-20"
+children-domestic-violence-acs-family-court,Health & human services;Youth,"AI-suggested, user-approved 2026-05-20"
+mamdani-universal-childcare-policy-questions,Youth;Governance,"AI-suggested, user-approved 2026-05-20"
+nyc-grocery-cost-explained,Economy,"AI-suggested, user-approved 2026-05-20"
+mamdani-housing-affordability-new-york,Housing,"AI-suggested, user-approved 2026-05-20"
+revealing-hidden-signals-in-city-hotline-data,Crime data;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+zohran-mamdani-trump-maduro-nyc,Politics,"AI-suggested, user-approved 2026-05-20"
+one-year-into-congestion-pricing-in-new-york-city,Cars,"AI-suggested, user-approved 2026-05-20"
+the-future-of-renewable-rikers,Rikers & jails;Governance,"AI-suggested, user-approved 2026-05-20"
+nstat-should-be-key-to-mamdani-public-safety-plan,Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+how-mamdani-can-delivery-free-buses-and-subways-too,Subway;Buses,"AI-suggested, user-approved 2026-05-20"
+new-york-needs-a-smarter-way-to-control-rents,Housing;Economy,"AI-suggested, user-approved 2026-05-20"
+department-of-community-safety-and-universal-childcare-albequerque-new-york,Public safety strategy;Youth,"AI-suggested, user-approved 2026-05-20"
+kathy-hochul-nese-pipeline-empire-wind,Climate,"AI-suggested, user-approved 2026-05-20"
+tax-revenue-is-destiny,Economy;Politics,"AI-suggested, user-approved 2026-05-20"
+mamdanis-victory-and-memories-of-dinkins,Politics,"AI-suggested, user-approved 2026-05-20"
+how-modern-new-york-city-mayors-meet-the-moment,Politics,"AI-suggested, user-approved 2026-05-20"
+mamdanis-charter-school-dilemma,Youth;Politics,"AI-suggested, user-approved 2026-05-20"
+zohran-mamdani-michelle-wu-and-brandon-johnson,Politics,"AI-suggested, user-approved 2026-05-20"
+no-city-for-old-monuments,Politics,"AI-suggested, user-approved 2026-05-20"
+a-new-era-in-new-york-city-political-history,Politics,"AI-suggested, user-approved 2026-05-20"
+mamdani-mailer-and-breslin-bringing-fun-to-new-york-city,Politics,"AI-suggested, user-approved 2026-05-20"
+what-came-after-1975-new-york-fiscal-crisis,Governance,"AI-suggested, user-approved 2026-05-20"
+new-yorks-next-mayor-must-put-heads-together,Politics,"AI-suggested, user-approved 2026-05-20"
+move-local-elections-to-even-years,Politics,"AI-suggested, user-approved 2026-05-20"
+flip-the-script-and-the-ballot-for-housing,Housing,"AI-suggested, user-approved 2026-05-20"
+two-mayoral-debates-are-not-nearly-enough,Politics,"AI-suggested, user-approved 2026-05-20"
+how-zohran-mamdani-can-get-out-of-the-gifted-and-talented-trap,Youth;Politics,"AI-suggested, user-approved 2026-05-20"
+universal-child-care-could-be-a-seismic-shift-for-new-yorks-children,Youth,"AI-suggested, user-approved 2026-05-20"
+why-isnt-education-at-the-center-of-the-new-york-city-mayoral-race,Youth;Politics,"AI-suggested, user-approved 2026-05-20"
+the-one-debate-answer-that-spoke-volumes-about-zohran-mamdani,Politics,"AI-suggested, user-approved 2026-05-20"
+can-cities-withstand-trumps-assault,Politics;Governance,"AI-suggested, user-approved 2026-05-20"
+john-lindsay-zohran-mamdani-and-how-ambitions-collide-with-reality,Politics,"AI-suggested, user-approved 2026-05-20"
+even-mamdanis-new-york-needs-millionaires,Economy;Governance,"AI-suggested, user-approved 2026-05-20"
+bill-de-blasio-role-model,Politics,"AI-suggested, user-approved 2026-05-20"
+designing-cities-for-a-sustainable-climate-future,Public space;Climate,"AI-suggested, user-approved 2026-05-20"
+percy-sutton-eric-adams-and-the-state-of-black-political-power-in-new-york,Politics;Race,"AI-suggested, user-approved 2026-05-20"
+new-yorks-housing-crisis-self-inflicted-and-solvable,Housing,"AI-suggested, user-approved 2026-05-20"
+a-housing-agenda-for-the-next-mayor,Housing,"AI-suggested, user-approved 2026-05-20"
+teachings-from-tokyo,Housing,"AI-suggested, user-approved 2026-05-20"
+learning-from-jersey-city,Housing,"AI-suggested, user-approved 2026-05-20"
+call-it-gentlefication,Housing,"AI-suggested, user-approved 2026-05-20"
+the-real-story-of-co-op-city,Housing,"AI-suggested, user-approved 2026-05-20"
+crossing-delancey-one-projects-story,Housing,"AI-suggested, user-approved 2026-05-20"
+learning-from-australias-gun-evolution,Guns,"AI-suggested, user-approved 2026-05-20"
+a-brief-biography-of-the-second-amendment,Guns,"AI-suggested, user-approved 2026-05-20"
+one-nation-under-guns,Guns,"AI-suggested, user-approved 2026-05-20"
+forging-firearm-folklore,Guns,"AI-suggested, user-approved 2026-05-20"
+let-new-york-vote-for-more-housing,Housing;Politics,"AI-suggested, user-approved 2026-05-20"
+mamdanis-facilitators-frenemiesor-foes,Politics,"AI-suggested, user-approved 2026-05-20"
+zohran-mamdanis-uphill-battle-on-public-grocery-stores,Economy;Governance,"AI-suggested, user-approved 2026-05-20"
+the-catholic-church-at-a-crossroads,Other,"AI-suggested, user-approved 2026-05-20"
+calling-the-cops-less-often,Crisis response;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+mamdani-needs-a-staffing-plan,Governance,"AI-suggested, user-approved 2026-05-20"
+siesta-time-new-york,Public space;Climate,"AI-suggested, user-approved 2026-05-20"
+how-zohran-mamdani-could-succeed-as-mayor,Politics,"AI-suggested, user-approved 2026-05-20"
+zohran-mamdani-in-the-balance,Politics,"AI-suggested, user-approved 2026-05-20"
+beyond-free-buses,Buses;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+government-is-already-in-the-grocery-business,Economy,"AI-suggested, user-approved 2026-05-20"
+adams-abdication-has-new-york-city-at-trumps-mercy,Politics;Immigration,"AI-suggested, user-approved 2026-05-20"
+how-you-yes-you-can-help-new-york-city-thrive,Other,"AI-suggested, user-approved 2026-05-20"
+urban-infrastructure-reexamined,Public space,"AI-suggested, user-approved 2026-05-20"
+how-small-acts-shape-great-cities,Public space,"AI-suggested, user-approved 2026-05-20"
+does-eric-adams-have-a-chance,Politics,"AI-suggested, user-approved 2026-05-20"
+how-to-get-smarter-about-fighting-crime,Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+new-yorks-primary-and-the-power-of-better-election,Politics,"AI-suggested, user-approved 2026-05-20"
+how-do-you-solve-a-problem-like-fees-and-fines,Criminal courts;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+fifty-years-of-injustice-at-rikers,Rikers & jails,"AI-suggested, user-approved 2026-05-20"
+mamdani-candidate-today-leader-tomorrow,Politics,"AI-suggested, user-approved 2026-05-20"
+the-most-interesting-thing-on-the-ballot-this-fall,Politics,"AI-suggested, user-approved 2026-05-20"
+zohran-mamdani-and-andrew-cuomo-arent-as-different-as-you-might-think,Politics,"AI-suggested, user-approved 2026-05-20"
+everyone-got-cities-wrong,Other,"AI-suggested, user-approved 2026-05-20"
+new-yorks-five-political-types,Politics,"AI-suggested, user-approved 2026-05-20"
+how-trump-twists-the-uses-of-the-national-guard,Politics;Federal policy,"AI-suggested, user-approved 2026-05-20"
+what-the-mayoral-debate-missed,Politics,"AI-suggested, user-approved 2026-05-20"
+tom-robbins-and-the-slow-death-of-common-civic-cul,Politics,"AI-suggested, user-approved 2026-05-20"
+ai-and-the-future-of-cities,Technology,"AI-suggested, user-approved 2026-05-20"
+the-truth-about-shootings-in-new-york-city,Crime data;Guns,"AI-suggested, user-approved 2026-05-20"
+can-the-usdot-end-mtas-congestion-pricing-system,Cars;Governance,"AI-suggested, user-approved 2026-05-20"
+drop-dead-city-review,Other,"AI-suggested, user-approved 2026-05-20"
+trumps-bizarro-new-deal,Politics,"AI-suggested, user-approved 2026-05-20"
+trumps-executive-orders-have-cities-in-the-crosshairs,Politics;Governance,"AI-suggested, user-approved 2026-05-20"
+donald-trump-vs-the-rule-of-law-and-new-york-city,Politics,"AI-suggested, user-approved 2026-05-20"
+what-you-can-do-about-trump,Politics,"AI-suggested, user-approved 2026-05-20"
+is-it-time-for-cities-to-go-it-alone,Politics,"AI-suggested, user-approved 2026-05-20"
+holding-the-center-vital-city-at-three,Politics,"AI-suggested, user-approved 2026-05-20"
+why-does-everything-cost-so-much,Economy,"AI-suggested, user-approved 2026-05-20"
+how-starbucks-and-other-coffee-shops-spark-entrepreneurship,Economy,"AI-suggested, user-approved 2026-05-20"
+echoes-of-1977-shape-2025-mayoral-politics-in-new-york,Politics,"AI-suggested, user-approved 2026-05-20"
+new-yorks-new-subway-map,Subway,"AI-suggested, user-approved 2026-05-20"
+is-there-any-path-to-victory-for-eric-adams-as-an-independent,Politics,"AI-suggested, user-approved 2026-05-20"
+can-new-york-still-build-transformative-infrastructure,Governance,"AI-suggested, user-approved 2026-05-20"
+migrants-give-more-than-they-take-to-new-york-citys-economy,Economy;Immigration,"AI-suggested, user-approved 2026-05-20"
+andrew-cuomo-sees-a-city-in-crisis-do-new-york-voters,Politics,"AI-suggested, user-approved 2026-05-20"
+editors-note-what-role-should-nonprofits-play-in-cities,Governance,"AI-suggested, user-approved 2026-05-20"
+alexis-de-tocqueville-and-the-art-of-association,Other,"AI-suggested, user-approved 2026-05-20"
+nonprofits-and-the-city,Nonprofits,"AI-suggested, user-approved 2026-05-20"
+the-paradox-of-nonprofit-trustworthiness,Nonprofits,"AI-suggested, user-approved 2026-05-20"
+the-enduring-power-of-poverty-pimps,Economy;Race,"AI-suggested, user-approved 2026-05-20"
+how-the-nonprofit-sector-fails-low-income-communities,Nonprofits,"AI-suggested, user-approved 2026-05-20"
+the-permanent-government-of-new-york-how-the-public-and-nonprofit-sectors-strengthen-the-city,Governance,"AI-suggested, user-approved 2026-05-20"
+rethinking-the-role-of-nonprofits-in-progressive-politics,Governance;Politics,"AI-suggested, user-approved 2026-05-20"
+the-trump-administration-poses-a-real-threat-to-nonprofits-in-new-york-and-beyond,Governance,"AI-suggested, user-approved 2026-05-20"
+service-delivery-is-not-enough-advocacy-should-be-central-to-every-nonprofit,Governance,"AI-suggested, user-approved 2026-05-20"
+mbas-for-the-public-good-does-getting-a-masters-degree-make-sense-for-nonprofit-professionals,Other,"AI-suggested, user-approved 2026-05-20"
+charter-schools-at-the-crossroads,Youth,"AI-suggested, user-approved 2026-05-20"
+in-defense-of-social-justice-upheaval-at-nonprofits,Other,"AI-suggested, user-approved 2026-05-20"
+why-trumps-attempt-to-kill-congestion-pricing-must-fail,Cars,"AI-suggested, user-approved 2026-05-20"
+whats-to-become-of-eric-adams-administration-now,Governance;Politics,"AI-suggested, user-approved 2026-05-20"
+how-urban-progressives-became-their-own-worst-enemy-lessons-from-new-york,Politics,"AI-suggested, user-approved 2026-05-20"
+big-cities-bigger-integrity-problems,Politics,"AI-suggested, user-approved 2026-05-20"
+whats-race-got-to-do-with-mayor-adams-corruption-scandal,Politics;Race,"AI-suggested, user-approved 2026-05-20"
+how-corrupt-is-new-york-anyway,Politics,"AI-suggested, user-approved 2026-05-20"
+casinos-bring-the-rot-why-gambling-is-fertile-ground-for-corruption,Governance;Politics,"AI-suggested, user-approved 2026-05-20"
+the-mayor-and-new-york-city-held-hostage-by-the-trump-administration,Politics,"AI-suggested, user-approved 2026-05-20"
+when-the-cure-for-corruption-is-worse-than-the-disease,Governance,"AI-suggested, user-approved 2026-05-20"
+tammany-through-clear-eyes,Politics,"AI-suggested, user-approved 2026-05-20"
+lessons-about-corruption-from-the-history-of-garbage,Politics,"AI-suggested, user-approved 2026-05-20"
+how-hong-kong-emerged-from-the-swamp,Governance,"AI-suggested, user-approved 2026-05-20"
+government-should-harness-the-power-of-ai-to-combat-corruption-while-preserving-managerial-discretion,Governance,"AI-suggested, user-approved 2026-05-20"
+running-for-nyc-mayor-through-a-fog,Politics,"AI-suggested, user-approved 2026-05-20"
+just-the-facts-on-new-york-city-subway-crime,Crime data;Subway,"AI-suggested, user-approved 2026-05-20"
+training-ai-to-make-cities-more-humane,Public space,"AI-suggested, user-approved 2026-05-20"
+crime-on-the-ground-and-how-its-experienced,Crime data;Politics,"AI-suggested, user-approved 2026-05-20"
+crime-in-context-locally-and-nationally,Crime data,"AI-suggested, user-approved 2026-05-20"
+crime-data-is-better-will-americans-pay-attention,Crime data,"AI-suggested, user-approved 2026-05-20"
+community-violence-intervention-at-a-crossroads,Community violence intervention,"AI-suggested, user-approved 2026-05-20"
+clustering-of-gun-violence-the-problem-that-wont-go-away,Crime data;Guns,"AI-suggested, user-approved 2026-05-20"
+fix-the-subway-not-society,Subway;Crime data,"AI-suggested, user-approved 2026-05-20"
+on-fear-itself-worry-about-crime-has-taken-on-a-life-of-its-own,Crime data;Politics,"AI-suggested, user-approved 2026-05-20"
+what-can-we-do-about-shoplifting-a-new-urban-plague,Crime;Public space,"AI-suggested, user-approved 2026-05-20"
+the-bronxs-crime-crisis,Crime data,"AI-suggested, user-approved 2026-05-20"
+broken-windows-politics-disorder-still-matters,Disorder;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+the-recovery-from-covid-19-pandemic-gun-violence,Crime data;Guns,"AI-suggested, user-approved 2026-05-20"
+toward-a-new-discipline-macro-criminology,Crime data;Research,"AI-suggested, user-approved 2026-05-20"
+a-new-yorker-mourns-the-conflagrations-engulfing-los-angeles,Other,"AI-suggested, user-approved 2026-05-20"
+new-york-too-much-of-an-undocumented-immigrant-sanctuary-or-not-enough,Immigration;Politics,"AI-suggested, user-approved 2026-05-20"
+the-problem-with-the-criminal-legal-system,Other,"AI-suggested, user-approved 2026-05-20"
+what-has-become-of-hip-hop-landmarks-in-new-york-city,Culture;Public space,"AI-suggested, user-approved 2026-05-20"
+for-new-york-city-crime-trends-a-good-month,Crime data,"AI-suggested, user-approved 2026-05-20"
+can-eric-adams-really-win-a-second-term,Politics,"AI-suggested, user-approved 2026-05-20"
+the-local-government-staffers-we-need-and-deserve,Governance,"AI-suggested, user-approved 2026-05-20"
+child-welfare-agencies-should-only-pull-children-from-their-parents-as-a-last-resort,Youth;Domestic violence,"AI-suggested, user-approved 2026-05-20"
+the-false-promise-of-police-crackdowns-in-new-york-city-roosevelt-island-queens-corridor,Public safety strategy;Policing,"AI-suggested, user-approved 2026-05-20"
+how-does-the-empire-state-strike-back-how-new-york-answers-a-restive-electorate,Politics,"AI-suggested, user-approved 2026-05-20"
+congestion-pricing-2-tolling-cars-to-enter-central-manhattan-remains-hugely-worthwhile,Cars,"AI-suggested, user-approved 2026-05-20"
+why-new-yorkers-in-poverty-need-city-of-yes,Housing,"AI-suggested, user-approved 2026-05-20"
+calling-real-leaders-the-2025-new-york-city-mayoral-race-is-underway,Politics,"AI-suggested, user-approved 2026-05-20"
+the-truth-about-youth-crime-rates-in-nyc,Crime data;Youth,"AI-suggested, user-approved 2026-05-20"
+movement-new-yorks-long-war-to-take-back-its-streets-from-the-car-excerpt,Subway;Buses,"AI-suggested, user-approved 2026-05-20"
+why-opponents-should-say-yes-to-city-of-yes,Housing;Politics,"AI-suggested, user-approved 2026-05-20"
+in-praise-of-a-new-manifesto-for-cities,Public space,"AI-suggested, user-approved 2026-05-20"
+in-these-streets-reporting-from-the-front-lines-of-inner-city-gun-violence-josiah-bates-review,Community violence intervention;Research,"AI-suggested, user-approved 2026-05-20"
+from-plantation-prisons-to-the-modern-era,Rikers & jails,"AI-suggested, user-approved 2026-05-20"
+bruce-western-on-the-impact-of-jail-on-the-lives-of-new-yorkers,Rikers & jails;Research,"AI-suggested, user-approved 2026-05-20"
+what-will-new-york-do-to-answer-decades-of-rape-claims-rikers-rosies,Rikers & jails,"AI-suggested, user-approved 2026-05-20"
+holding-rikers-officers-accountable-an-almost-impossible-task,Rikers & jails,"AI-suggested, user-approved 2026-05-20"
+a-snapshot-of-how-unions-forestall-progress-on-jail-conditions,Rikers & jails,"AI-suggested, user-approved 2026-05-20"
+hardship-on-top-of-hardship,Criminal courts;Rikers & jails,"AI-suggested, user-approved 2026-05-20"
+a-culture-of-learning-can-defeat-a-culture-of-violence,Rikers & jails;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+improving-conditions-on-rikers-island,Rikers & jails,"AI-suggested, user-approved 2026-05-20"
+the-limits-of-litigation-history-of-federal-oversight-at-rikers,Rikers & jails,"AI-suggested, user-approved 2026-05-20"
+can-a-receiver-bring-enduring-change-for-the-better,Rikers & jails,"AI-suggested, user-approved 2026-05-20"
+can-eric-adams-govern-without-a-government,Politics,"AI-suggested, user-approved 2026-05-20"
+if-eric-adams-does-not-resign-can-he-be-forced-out-of-office-its-complicated,Politics,"AI-suggested, user-approved 2026-05-20"
+eric-adams-legal-headaches-reforming-new-york-travel-expenses-laws,Politics,"AI-suggested, user-approved 2026-05-20"
+an-architect-dissects-francis-ford-coppolas-passion-project-megalopolis,Culture,"AI-suggested, user-approved 2026-05-20"
+the-subway-movie-everyone-should-see-pelham-one-two-three,Subway,"AI-suggested, user-approved 2026-05-20"
+what-to-do-about-people-struggling-with-serious-mental-illness-on-the-subway-nyc,Mental illness;Subway,"AI-suggested, user-approved 2026-05-20"
+expand-the-reach-of-the-subway-system-a-2125-map,Subway,"AI-suggested, user-approved 2026-05-20"
+subway-ads-through-the-eras,Subway,"AI-suggested, user-approved 2026-05-20"
+hate-the-mta-beware-the-alternatives,Subway;Governance,"AI-suggested, user-approved 2026-05-20"
+riding-while-female-a-safer-subway-for-women-too,Subway;Crime data,"AI-suggested, user-approved 2026-05-20"
+why-are-new-york-transit-expenses-so-high-history-of-politics,Subway;Politics,"AI-suggested, user-approved 2026-05-20"
+the-public-square-subways,Subway;Cars,"AI-suggested, user-approved 2026-05-20"
+waiting-for-the-elevators-mta-long-road-to-accessible-wheelchair-system,Subway;Housing,"AI-suggested, user-approved 2026-05-20"
+the-four-forces-that-have-shaped-the-subway-system,Subway,"AI-suggested, user-approved 2026-05-20"
+without-a-better-bus-network-the-citys-public-transportation-system-will-fail-people,Buses,"AI-suggested, user-approved 2026-05-20"
+the-45-minute-city,Subway;Public space,"AI-suggested, user-approved 2026-05-20"
+eric-adams-scandals-in-context,Politics,"AI-suggested, user-approved 2026-05-20"
+whats-missing-in-the-case-against-eric-adams,Politics,"AI-suggested, user-approved 2026-05-20"
+the-eric-adams-indictment-a-tragedy-in-two-dimensions,Politics,"AI-suggested, user-approved 2026-05-20"
+make-design-relevant-again,Public space,"AI-suggested, user-approved 2026-05-20"
+gun-violence-prevention-and-the-harm-of-omission,Guns;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+crime-rhetoric-vs-crime-realities,Crime data;Politics,"AI-suggested, user-approved 2026-05-20"
+city-beautiful-city-ugly,Public space,"AI-suggested, user-approved 2026-05-20"
+new-york-times-to-new-york-drop-dead,Politics,"AI-suggested, user-approved 2026-05-20"
+jane-jacobs-would-support-city-of-yes,Housing;Public space,"AI-suggested, user-approved 2026-05-20"
+10-years-after-the-killing-of-eric-garner,Policing;Research,"AI-suggested, user-approved 2026-05-20"
+how-architecture-can-create-community-or-isolation,Public space;Housing,"AI-suggested, user-approved 2026-05-20"
+gothams-boundless-ingenuity,Economy,"AI-suggested, user-approved 2026-05-20"
+whither-the-black-exodus,Politics;Race,"AI-suggested, user-approved 2026-05-20"
+postcards-from-the-past,Culture,"AI-suggested, user-approved 2026-05-20"
+build-more-homes-for-families,Housing,"AI-suggested, user-approved 2026-05-20"
+why-ill-probably-never-leave-new-york-city,Other,"AI-suggested, user-approved 2026-05-20"
+when-citizens-rescue-neighborhoods,Public space;Governance,"AI-suggested, user-approved 2026-05-20"
+the-cultural-upside-of-a-downturn,Economy;Culture,"AI-suggested, user-approved 2026-05-20"
+how-to-make-the-five-boroughs-better-for-parents-and-children,Housing;Youth,"AI-suggested, user-approved 2026-05-20"
+our-transit-tomorrow,Subway,"AI-suggested, user-approved 2026-05-20"
+self-esteem-and-the-modern-city,Other,"AI-suggested, user-approved 2026-05-20"
+the-secret-ingredient-safe-pedestrian-friendly-streets,Public space,"AI-suggested, user-approved 2026-05-20"
+governance-in-the-time-of-congestion,Cars;Governance,"AI-suggested, user-approved 2026-05-20"
+the-titanium-law-of-evaluation,Research,"AI-suggested, user-approved 2026-05-20"
+was-kathy-hochuls-congestion-pricing-calculation-good-or-bad-politics,Politics,"AI-suggested, user-approved 2026-05-20"
+how-london-and-stockholm-made-congestion-pricing-politics-work,Cars,"AI-suggested, user-approved 2026-05-20"
+understanding-new-yorks-congestion-pricing-mess,Cars;Governance,"AI-suggested, user-approved 2026-05-20"
+peoples-perception-of-safety-on-subways,Subway;Mental illness,"AI-suggested, user-approved 2026-05-20"
+does-nothing-stop-a-bullet-like-a-job,Guns;Crime data,"AI-suggested, user-approved 2026-05-20"
+columbia-1968-commencement-address,Other,"AI-suggested, user-approved 2026-05-20"
+congestion-pricing-an-explainer,Cars,"AI-suggested, user-approved 2026-05-20"
+the-long-and-winding-road,Cars;Governance,"AI-suggested, user-approved 2026-05-20"
+invest-in-transit-the-right-way,Subway;Buses,"AI-suggested, user-approved 2026-05-20"
+smarter-parking-policy-please,Cars;Public space,"AI-suggested, user-approved 2026-05-20"
+new-yorks-new-housing-deal-a-significant-win-for-tenants,Housing,"AI-suggested, user-approved 2026-05-20"
+when-zoning-goes-too-far,Housing,"AI-suggested, user-approved 2026-05-20"
+understanding-the-new-york-news-subsidy,Other,"AI-suggested, user-approved 2026-05-20"
+new-york-needs-remedial-education-in-civic-tech,Technology,"AI-suggested, user-approved 2026-05-20"
+data-in-garbage-out,Research,"AI-suggested, user-approved 2026-05-20"
+the-public-square-issue-7,Rikers & jails;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+the-abcs-of-policy-research,Research,"AI-suggested, user-approved 2026-05-20"
+the-hubris-of-social-scientists,Research,"AI-suggested, user-approved 2026-05-20"
+why-does-reform-fail,Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+democracy-of-evidence,Research,"AI-suggested, user-approved 2026-05-20"
+causal-research-more-not-less,Research,"AI-suggested, user-approved 2026-05-20"
+confronting-radical-uncertainty,Research,"AI-suggested, user-approved 2026-05-20"
+the-precautionary-principle,Research,"AI-suggested, user-approved 2026-05-20"
+how-the-sausage-gets-made-a-primer,Research,"AI-suggested, user-approved 2026-05-20"
+jimmy-breslin-and-the-lost-rhythm-of-new-york,Other,"AI-suggested, user-approved 2026-05-20"
+when-cant-miss-programs-fail,Research,"AI-suggested, user-approved 2026-05-20"
+its-hard-to-change-people,Research;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+raising-the-bar-and-ending-an-era-of-low-expectations,Governance,user-confirmed
+what-really-drives-policy,Public safety strategy;Research,"AI-suggested, user-approved 2026-05-20"
+the-limits-of-death-star-thinking,Research;Governance,"AI-suggested, user-approved 2026-05-20"
+what-is-gold-standard-evidence-anyway,Research,"AI-suggested, user-approved 2026-05-20"
+the-world-is-hard-to-change,Research,"AI-suggested, user-approved 2026-05-20"
+the-case-for-optimism,Research;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+new-york-city-crime-beyond-the-numbers,Crime data,"AI-suggested, user-approved 2026-05-20"
+what-la-guardia-gave-new-york,Politics,"AI-suggested, user-approved 2026-05-20"
+how-the-jail-population-can-be-reduced-safely,Rikers & jails;Crime data,"AI-suggested, user-approved 2026-05-20"
+could-our-jails-be-a-civic-asset,Rikers & jails,"AI-suggested, user-approved 2026-05-20"
+how-long-people-stay-is-the-problem,Rikers & jails;Criminal courts,"AI-suggested, user-approved 2026-05-20"
+a-brief-history-of-the-3300-target,Rikers & jails;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+whats-the-plan,Rikers & jails,"AI-suggested, user-approved 2026-05-20"
+the-perils-and-necessity-of-jail-population-forecasting,Rikers & jails;Crime data,"AI-suggested, user-approved 2026-05-20"
+strengthening-supervised-release,Criminal courts;Rikers & jails,"AI-suggested, user-approved 2026-05-20"
+new-york-needs-more-than-3300-jail-beds,Rikers & jails,"AI-suggested, user-approved 2026-05-20"
+what-jail-population-projections-tell-you-about-a-governments-aspirations,Rikers & jails,"AI-suggested, user-approved 2026-05-20"
+five-myths-about-mayoral-control,Governance;Youth,"AI-suggested, user-approved 2026-05-20"
+maricopas-slap-at-alvin-bragg-plays-politics-with-peoples-lives,Criminal courts;Politics,"AI-suggested, user-approved 2026-05-20"
+all-crime-is-local-and-solutions-must-be-too,Crime data;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+what-crime-stats-fail-to-show,Crime data,"AI-suggested, user-approved 2026-05-20"
+crime-perceptions-and-reality-in-new-york,Crime data,"AI-suggested, user-approved 2026-05-20"
+forecasting-new-york-city-crime-in-2024,Crime data,"AI-suggested, user-approved 2026-05-20"
+two-big-thoughts-about-the-steep-crime-drop,Crime data,"AI-suggested, user-approved 2026-05-20"
+homicide-life-in-the-stats,Crime data,"AI-suggested, user-approved 2026-05-20"
+a-safer-city-and-nation-with-asterisks,Crime data,"AI-suggested, user-approved 2026-05-20"
+taking-control-of-new-yorks-budgetary-future,Governance,user-confirmed
+why-family-court-cant-be-saved,Criminal courts;Youth,"AI-suggested, user-approved 2026-05-20"
+is-family-court-worth-saving,Criminal courts,"AI-suggested, user-approved 2026-05-20"
+history-of-opioids-in-new-york-city,Drugs,"AI-suggested, user-approved 2026-05-20"
+the-explosion-of-online-drug-marketplaces,Drugs,"AI-suggested, user-approved 2026-05-20"
+how-new-york-can-learn-from-the-tobacco-settlement,Drugs,"AI-suggested, user-approved 2026-05-20"
+learning-from-decriminalization-portland-and-portugal,Drugs;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+the-public-square-issue-6,Drugs,"AI-suggested, user-approved 2026-05-20"
+the-marijuana-reset-new-york-needs,Drugs,"AI-suggested, user-approved 2026-05-20"
+the-real-reason-the-weed-market-is-broken,Drugs,"AI-suggested, user-approved 2026-05-20"
+putting-the-humility-back-in-harm-reduction,Drugs,"AI-suggested, user-approved 2026-05-20"
+harm-reduction-save-lives,Drugs,"AI-suggested, user-approved 2026-05-20"
+paving-pathways-to-recovery-for-all,Drugs,"AI-suggested, user-approved 2026-05-20"
+the-drug-war-without-cops,Drugs;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+the-good-substances-do,Drugs,"AI-suggested, user-approved 2026-05-20"
+e-bike-fires-in-new-york-city,Public safety strategy;Housing,"AI-suggested, user-approved 2026-05-20"
+are-nycs-jails-ungovernable-opening-remarks,Rikers & jails,"AI-suggested, user-approved 2026-05-20"
+fixing-new-york-citys-jails-a-federal-receiver-closing-remarks,Rikers & jails,"AI-suggested, user-approved 2026-05-20"
+fixing-new-york-citys-jails-a-federal-receiver-remarks,Rikers & jails,"AI-suggested, user-approved 2026-05-20"
+unraveling-the-threads-of-americas-gun-culture,Guns,"AI-suggested, user-approved 2026-05-20"
+a-one-city-solution,Other,"AI-suggested, user-approved 2026-05-20"
+stuck-on-utopia-parkway,Other,"AI-suggested, user-approved 2026-05-20"
+what-police-can-do-differently-to-save-lives,Policing;Guns,"AI-suggested, user-approved 2026-05-20"
+police-management-matters-a-lot,Policing;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+treat-every-shooting-like-a-homicide,Guns;Crime data,"AI-suggested, user-approved 2026-05-20"
+what-the-numbers-miss-about-gun-crimes,Crime data,"AI-suggested, user-approved 2026-05-20"
+when-city-streets-really-are-war-zones,Crime data;Guns,"AI-suggested, user-approved 2026-05-20"
+making-a-federal-case-out-of-a-local-shooting,Criminal courts;Guns,"AI-suggested, user-approved 2026-05-20"
+police-neglect-and-why-many-young-black-men-carry-guns,Guns;Policing;Race,"AI-suggested, user-approved 2026-05-20"
+teach-officers-how-to-listen,Policing;Guns,"AI-suggested, user-approved 2026-05-20"
+a-window-into-new-york-citys-pulgueras,Economy,"AI-suggested, user-approved 2026-05-20"
+where-vital-city-is-headed,Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+age-diversity-in-cities-and-neighborhoods,Public space,"AI-suggested, user-approved 2026-05-20"
+half-a-century-of-criminal-justice-reform,Criminal courts;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+the-possibilities-and-limitations-of-a-receivership-in-nyc-jails,Rikers & jails,"AI-suggested, user-approved 2026-05-20"
+michael-oppenheimer-mark-chambers-interview,Climate,"AI-suggested, user-approved 2026-05-20"
+why-pools-matter,Public space,"AI-suggested, user-approved 2026-05-20"
+the-urban-history-of-ice-cream,Other,"AI-suggested, user-approved 2026-05-20"
+envisioning-car-free-streets,Public space,"AI-suggested, user-approved 2026-05-20"
+new-york-handles-garbage-all-wrong,Public space,"AI-suggested, user-approved 2026-05-20"
+eating-out-a-photo-essay,Public space,"AI-suggested, user-approved 2026-05-20"
+building-diverse-schools-in-changing-neighborhoods,Youth;Housing,"AI-suggested, user-approved 2026-05-20"
+rikers-hearing-june-2023,Rikers & jails;Criminal courts,"AI-suggested, user-approved 2026-05-20"
+dante-ross-and-the-golden-age-of-hip-hop,Culture,"AI-suggested, user-approved 2026-05-20"
+public-safety-and-mental-health,Mental illness;Subway;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+invest-in-libraries,Economy;Governance,"AI-suggested, user-approved 2026-05-20"
+why-the-citys-jails-are-broken,Rikers & jails,"AI-suggested, user-approved 2026-05-20"
+sic-the-parking-police-on-the-nypd,Policing;Cars,"AI-suggested, user-approved 2026-05-20"
+parking-placard-and-license-plate-arrogance,Cars;Policing,"AI-suggested, user-approved 2026-05-20"
+lessons-for-criminal-justice-reformers,Public safety strategy;Research,"AI-suggested, user-approved 2026-05-20"
+twenty-strategies-for-reducing-crime-in-cities,Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+how-new-yorks-bail-laws-look-from-the-bench,Criminal courts,"AI-suggested, user-approved 2026-05-20"
+the-role-of-self-control-in-preventing-crime,Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+daniel-penny-jordan-neely-and-all-of-us-in-between,Subway;Mental illness;Crisis response,"AI-suggested, user-approved 2026-05-20"
+maintaining-the-built-environment,Housing;Governance,"AI-suggested, user-approved 2026-05-20"
+how-third-places-promote-cohesion,Public space;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+elijah-anderson-interview,Race,"AI-suggested, user-approved 2026-05-20"
+rethinking-libraries-in-a-digital-age,Public space,"AI-suggested, user-approved 2026-05-20"
+slash-poverty-and-the-rest-will-get-easier,Public safety strategy;Research,"AI-suggested, user-approved 2026-05-20"
+the-stains-of-redlining,Race;Housing,"AI-suggested, user-approved 2026-05-20"
+poverty-disadvantage-and-violence,Crime data;Research,"AI-suggested, user-approved 2026-05-20"
+more-non-profits-fewer-crimes,Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+the-evolution-of-flatbush,Housing;Public space,"AI-suggested, user-approved 2026-05-20"
+pickup-basketball,Public space,"AI-suggested, user-approved 2026-05-20"
+robert-sampson-interview,Research;Crime data,"AI-suggested, user-approved 2026-05-20"
+measures-of-urban-vitality,Other,"AI-suggested, user-approved 2026-05-20"
+the-public-square-march-2023,Public space;Politics,"AI-suggested, user-approved 2026-05-20"
+placekeeping-in-brownsville,Public space;Youth,"AI-suggested, user-approved 2026-05-20"
+brownsville-and-bay-ridge,Crime data;Housing;Public space,"AI-suggested, user-approved 2026-05-20"
+poverty-disadvantage-and-violence-an-iron-link,Crime data;Race,"AI-suggested, user-approved 2026-05-20"
+rat-control-in-urban-environments,Public space,"AI-suggested, user-approved 2026-05-20"
+crime-in-2022-and-2023-a-symposium,Crime data;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+act-now-or-expect-more-of-the-same,Crime data;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+2023-crime-trends,Crime data,"AI-suggested, user-approved 2026-05-20"
+please-stop-blaming-bail-reform,Crime data,"AI-suggested, user-approved 2026-05-20"
+approaches-to-crime-in-the-bronx-2023,Criminal courts;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+our-tragically-shortsighted-crime-debate,Public safety strategy;Crime data,"AI-suggested, user-approved 2026-05-20"
+black-market-brooklyn,Drugs;Governance,"AI-suggested, user-approved 2026-05-20"
+new-york-stilled-life-feral-city-review,Public space,"AI-suggested, user-approved 2026-05-20"
+making-new-york-city-pools-accessible-to-all,Public space,"AI-suggested, user-approved 2026-05-20"
+rikers-captives-review,Rikers & jails,"AI-suggested, user-approved 2026-05-20"
+the-city-is-my-lover,Other,"AI-suggested, user-approved 2026-05-20"
+long-crisis-review,Other,"AI-suggested, user-approved 2026-05-20"
+the-victim-card,Crime data;Politics,"AI-suggested, user-approved 2026-05-20"
+ghosts-of-deinstitutionalization,Mental illness;Crisis response,"AI-suggested, user-approved 2026-05-20"
+straight-line-crazy-review,Public space,"AI-suggested, user-approved 2026-05-20"
+connecting-communities-through-design,Public safety strategy;Public space,"AI-suggested, user-approved 2026-05-20"
+crime-and-the-built-environment,Public space;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+policings-hidden-curriculum,Public safety strategy;Crime data,"AI-suggested, user-approved 2026-05-20"
+the-public-square,Disorder;Crime data,"AI-suggested, user-approved 2026-05-20"
+law-enforcement-and-legitimacy,Policing;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+subway-disorder,Subway;Policing,"AI-suggested, user-approved 2026-05-20"
+tables-and-chairs,Public space,"AI-suggested, user-approved 2026-05-20"
+police-become-government,Policing;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+public-space-design-and-safety,Public space,"AI-suggested, user-approved 2026-05-20"
+beyond-enforcement,Disorder;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+peter-moskos-oral-history-times-square,Disorder;Public space,"AI-suggested, user-approved 2026-05-20"
+federal-transitional-administrator-juvenile-detention-cook-county,Rikers & jails;Youth,"AI-suggested, user-approved 2026-05-20"
+what-is-a-receiver,Criminal courts,"AI-suggested, user-approved 2026-05-20"
+vital-city-issue-1,Guns,"AI-suggested, user-approved 2026-05-20"
+welcome-to-vital-city,Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+already-in-the-trap-young-new-yorkers,Guns;Research,"AI-suggested, user-approved 2026-05-20"
+gun-violence-debates,Guns;Crime data,"AI-suggested, user-approved 2026-05-20"
+violence-and-urban-inequality,Crime data;Race,"AI-suggested, user-approved 2026-05-20"
+mobilizing-the-public-reimagining-public-safety,Policing;Guns,"AI-suggested, user-approved 2026-05-20"
+balancing-deterrence-and-prevention-the-role-of-research,Public safety strategy;Research,"AI-suggested, user-approved 2026-05-20"
+weighing-the-impacts-of-policing,Public safety strategy;Crime data,"AI-suggested, user-approved 2026-05-20"
+special-report-on-rikers,Rikers & jails;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+public-safety-and-mental-health,Mental illness;Subway,strip Public Safety Strategy per user
+daniel-penny-jordan-neely-and-all-of-us-in-between,Subway;Mental illness,strip Crisis response per user
+what-can-we-do-about-shoplifting-a-new-urban-plague,Shoplifting,new domain
+nyc-public-bathrooms-mamdani-plan,Governance;Public space,
+how-tokyo-built-clean-accessible-toilets-nyc-wants,Governance;Public space;Subway,
+children-domestic-violence-acs-family-court,Youth;Domestic violence,new domain
+system-coordination-in-crisis-response-to-high-acuity-homelessness,Homelessness;Mental illness;Crisis response,
+will-we-ever-swim-in-the-east-river,Public space,
+an-antidemocratic-approach-to-democratic-governance,Governance;Nonprofits,new domain
+waymo-nyc-robotaxi-future,Technology;Cars,"AI-suggested, user-approved 2026-05-20"
+pedestrian-foot-tracking-nyc-map-model-mit,Public space;Research,"AI-suggested, user-approved 2026-05-20"
+london-low-traffic-neighborhoods-safety-urban-planning,Cars;Public space,"AI-suggested, user-approved 2026-05-20"
+erin-dalton-data-driven-social-services-nyc,Homelessness,"AI-suggested, user-approved 2026-05-20"
+hochul-nuclear-energy-climate-new-york,Climate,"AI-suggested, user-approved 2026-05-20"
+waymo-robotaxi-autonomous-driving-nyc,Cars,"AI-suggested, user-approved 2026-05-20"
+mamdani-local-law-97-enforcement-pollution,Climate,"AI-suggested, user-approved 2026-05-20"
+a-safer-cheaper-quicker-way-of-daylighting-intersections,Public space;Cars,"AI-suggested, user-approved 2026-05-20"
+taking-mamdanis-revolution-to-the-streets,Public space;Cars,"AI-suggested, user-approved 2026-05-20"
+how-new-york-city-got-to-the-brink-of-hosting-vegas-style-casinos,Economy;Governance,"AI-suggested, user-approved 2026-05-20"
+what-mamdani-gets-wrong-about-severe-mental-illness-and-crisis-response,Mental illness;Crisis response;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+mamdani-department-of-community-safety-where-theory-meets-practice,Crisis response;Mental illness,"AI-suggested, user-approved 2026-05-20"
+how-about-energy-affordability-for-new-york-city,Economy;Governance,"AI-suggested, user-approved 2026-05-20"
+the-devil-is-in-the-details-of-911-dispatch,Crisis response;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+a-budget-crash-course-for-zohran-mamdani,Governance,"AI-suggested, user-approved 2026-05-20"
+safe-only-at-certain-speeds,Cars;Public space,"AI-suggested, user-approved 2026-05-20"
+congestion-pricing-across-america,Cars,"AI-suggested, user-approved 2026-05-20"
+if-free-buses-arent-wise-what-about-cheaper-citi-bikes,Buses;Economy,"AI-suggested, user-approved 2026-05-20"
+new-york-city-isnt-ready-for-the-trump-stress-test,Politics;Federal policy,"AI-suggested, user-approved 2026-05-20"
+want-to-fix-the-subway-stop-asking-it-to-be-something-its-not,Subway;Homelessness,"AI-suggested, user-approved 2026-05-20"
+artificial-intelligence-and-the-nonprofit-sector,Nonprofits,"AI-suggested, user-approved 2026-05-20"
+congestion-pricing-to-the-rescue,Cars;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+how-will-congestion-pricing-actually-work,Cars,"AI-suggested, user-approved 2026-05-20"
+congestion-pricings-belated-lesson,Cars,"AI-suggested, user-approved 2026-05-20"
+on-overdose-prevention-centers-listen-to-community-complaints,Drugs;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+what-kind-of-nypd-commissioner-do-we-need,Policing,"AI-suggested, user-approved 2026-05-20"
+reimagining-the-street-and-subways-platforms-new-york-city,Subway;Public space,"AI-suggested, user-approved 2026-05-20"
+the-congestion-pricing-meltdown-and-its-aftermath,Cars,"AI-suggested, user-approved 2026-05-20"
+what-new-yorks-subway-system-can-learn-from-cities-around-the-world,Subway,"AI-suggested, user-approved 2026-05-20"
+should-new-york-city-have-free-fares-for-better-and-worse,Subway;Buses;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+bring-vision-to-hochuls-mental-health-plans,Mental illness,"AI-suggested, user-approved 2026-05-20"
+beware-of-potholes,Cars;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+risks-outside-the-zone,Cars;Race,"AI-suggested, user-approved 2026-05-20"
+offer-riders-a-better-deal,Cars;Buses;Subway,"AI-suggested, user-approved 2026-05-20"
+serve-the-walkers,Public space;Cars,"AI-suggested, user-approved 2026-05-20"
+build-better-for-bicyclists,Public space;Cars,"AI-suggested, user-approved 2026-05-20"
+is-transformational-change-the-only-thing-that-matters,Public safety strategy;Research,"AI-suggested, user-approved 2026-05-20"
+welcome-to-oz-a-look-behind-the-government-curtain,Governance;Research,"AI-suggested, user-approved 2026-05-20"
+humanize-every-incarcerated-person,Rikers & jails;Mental illness,"AI-suggested, user-approved 2026-05-20"
+people-with-serious-mental-illness-need-housing-not-jail,Mental illness;Rikers & jails,"AI-suggested, user-approved 2026-05-20"
+improving-new-york-public-transit-for-less,Buses;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+responding-to-troubled-men-on-the-street,Crisis response;Mental illness,"AI-suggested, user-approved 2026-05-20"
+the-public-square-issue-4,Disorder;Crime data,"AI-suggested, user-approved 2026-05-20"
+resisting-the-asylums-pull,Mental illness;Public safety strategy,"AI-suggested, user-approved 2026-05-20"
+why-it-costs-4-billion-per-mile-of-subway-track,Subway;Governance,"AI-suggested, user-approved 2026-05-20"
+sunday-in-the-park,Public space;Culture,"AI-suggested, user-approved 2026-05-20"
+lorem-ipsum,Rikers & jails;Crime data,"AI-suggested, user-approved 2026-05-20"
+stemming-violence-investing-in-civic-goods,Public safety strategy;Youth,"AI-suggested, user-approved 2026-05-20"
+the-failures-of-alcohol-regulation,Drugs,
+six-meaningful-long-term-city-budget-cuts,Governance,user-confirmed
+truth-in-budgeting-asap,Governance,user-confirmed
+japan-rail-system-lessons-mta-nj-transit,Subway,round-3 cleanup
+new-york-city-needs-a-two-track-mind,Subway;Housing,round-3 cleanup
+what-to-do-about-people-in-crisis-on-streets-and-subways,Homelessness;Mental illness;Crisis response,round-3 cleanup
+how-the-system-works-for-people-in-crisis-on-streets-and-subways,Homelessness;Mental illness;Crisis response,round-3 cleanup
+what-the-data-show-people-in-crisis-on-the-streets-and-subways,Homelessness;Mental illness;Crisis response,round-3 cleanup
+editors-note-megalopolis-subway-where-romance-and-reality-meet,Subway,round-3 cleanup
+improving-carceral-care,Rikers & jails,round-3 cleanup
+eric-klinenberg-interview,Public space,round-3 cleanup
+sam-rivera-interview,Drugs,round-3 cleanup
+margaret-haney-interview,Drugs,round-3 cleanup
+what-we-are-reading-issue-6,Drugs,round-3 cleanup
+are-nycs-jails-ungovernable,Rikers & jails,round-3 cleanup
+mta-new-app-subway-omny,Subway,round-3 cleanup
+2025-a-look-back-most-read,Other,round-3 cleanup
+a-conversation-with-mta-chairman-and-ceo-janno-lieber,Subway;Governance,round-3 cleanup
+what-were-reading-fall-2024,Subway,round-3 cleanup
+a-conversation-with-former-new-york-city-transit-presidents-sarah-feinberg-and-richard-davey,Subway,interview with former NYCT presidents
+robert-sampson-adam-gopnik-interview-transcript,Crime data,removed from Data
+real-crime-numbers-nyc-nypd,Crime data,removed from Data
+jennifer-doleac-book-review,Research,removed from Data
+crime-in-new-york-city-trends-statistics,Crime data,removed from Data
+youth-crime-in-new-york-after-raise-the-age,Crime data;Youth,removed from Data
+reality-check-how-safe-are-manhattan-and-brooklyn,Crime data,removed from Data
+reality-check-whos-the-guard-really-guarding-in-us-cities,Crime data;Policing,removed from Data
+what-new-yorkers-should-know-about-nypd-staffing,Crime data;Policing,removed from Data
+the-state-of-crime-in-new-york-city-at-midyear-2025,Crime data,removed from Data
+the-state-of-new-york-citys-jails-year-end-2024,Crime data;Rikers & jails,removed from Data
+the-nypds-2025-strategy-a-conversation-with-michael-lipetri,Policing,removed from Data
+vital-signs-state-of-the-city-on-crime-2024,Crime data,removed from Data
+conditions-inside-the-citys-jails-continue-to-be-violent-a-data-story,Crime data;Rikers & jails,removed from Data
+the-state-of-new-york-citys-jails-mid-2024,Crime data;Rikers & jails,removed from Data
+the-state-of-crime-in-new-york-city-at-midyear-2024,Crime data,removed from Data
+what-we-are-reading-issue-8,Other,removed from Data
+how-were-really-doing,Crime data;Governance,removed from Data
+does-evidence-matter-in-policy-making,Research,removed from Data
+the-research-that-changed-my-thinking,Research,removed from Data
+who-gets-locked-up-and-why-a-data-story,Crime data;Rikers & jails,removed from Data
+the-citys-jails-the-crises-in-numbers,Crime data;Rikers & jails,removed from Data
+drugs-in-new-york-city-by-the-numbers,Drugs;Crime data,removed from Data
+fixing-new-york-citys-jails-a-federal-receiver-opening,Rikers & jails,removed from Data
+what-the-numbers-tell-us-about-gun-crimes,Guns;Crime data,removed from Data
+in-summery,Crime data,removed from Data
+vital-signs-march-2023,Crime data,removed from Data
+state-of-the-jails-january-2023,Crime data;Rikers & jails,removed from Data
+gun-violence-in-new-york-city-the-data,Guns;Crime data,removed from Data
+vital-signs-crime-and-justice-in-new-york-city,Crime data,removed from Data
+state-of-the-jails-november-2022,Crime data;Rikers & jails,removed from Data
+issue-2-data-story,Crime data,removed from Data

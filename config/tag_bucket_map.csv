@@ -10,7 +10,7 @@ Museums,Culture,6
 Book Review,Culture,5
 Film & TV,Culture,5
 Community,Culture,4
-Parks,Culture,4
+Parks,Public space,4
 Food and Drink,Culture,2
 Music & Entertainment,Culture,2
 Religion,Culture,2
@@ -34,9 +34,9 @@ Social Science.,Data,1
 The Research That Changed My Thinking,Data,1
 Immigration,Immigration,8
 Economics,Economy,27
-Technology,Economy,27
+Technology,Technology,27
 Journalism,Economy,16
-Artifical Intelligence,Economy,4
+Artifical Intelligence,Technology,4
 Community Development,Economy,1
 Jobs,Economy,1
 Labor,Economy,1
@@ -68,7 +68,7 @@ Policymakers,Governance,1
 Quality of Life.,Governance,1
 Public Health,Health & human services,32
 Mental Health,Health & human services,16
-Homelessness,Health & human services,13
+Homelessness,Homelessness,13
 Child Welfare,Health & human services,2
 Community Services,Health & human services,2
 Community Organizing,Health & human services,1
@@ -97,47 +97,47 @@ Nonprofit Management.,Politics,1
 Nonprofit Model,Politics,1
 Nonprofit Sector,Politics,1
 Philanthropy,Politics,1
-Crime,Public Safety,138
-Justice,Public Safety,78
-Gun Violence,Public Safety,66
-Police Reform,Public Safety,50
-Jails,Public Safety,48
-Drugs,Public Safety,21
-Incarceration,Public Safety,21
-Subway Crime,Public Safety,19
-Police-Community Relations,Public Safety,9
-Safety,Public Safety,9
-Prosecution,Public Safety,8
-Persistent Problems Inside,Public Safety,7
-Broken Windows,Public Safety,5
-Disorder,Public Safety,5
-Projecting the Size of the Jail Population — More than Math,Public Safety,5
-Criminal Justice,Public Safety,4
-Law,Public Safety,4
-People in Crisis on Streets and Subways,Public Safety,4
-Solving Cases: The People,Public Safety,4
-Solving Cases: The System,Public Safety,4
-Crime Stories,Public Safety,3
-Incarceration Stories,Public Safety,3
-Public Perception and Statistical Realities,Public Safety,3
-Subway Safety,Public Safety,3
-Subway Safety Stories,Public Safety,3
-Two Sides of the Gun: Stories of Possession and Victimization,Public Safety,3
-Gun Violence.,Public Safety,2
-Alcohol,Public Safety,1
-Guns,Public Safety,1
-Incarceration.,Public Safety,1
-Legalization,Public Safety,1
-My Substance Story,Public Safety,1
-Prosecution.,Public Safety,1
-Substance Abuse,Public Safety,1
+Crime,Crime,138
+Justice,Criminal courts,78
+Gun Violence,Guns,66
+Police Reform,Policing,50
+Jails,Rikers & jails,48
+Drugs,Drugs,21
+Incarceration,Rikers & jails,21
+Subway Crime,Crime,19
+Police-Community Relations,Policing,9
+Safety,Policing,9
+Prosecution,Criminal courts,8
+Persistent Problems Inside,Rikers & jails,7
+Broken Windows,Policing,5
+Disorder,Disorder,5
+Projecting the Size of the Jail Population — More than Math,Rikers & jails,5
+Criminal Justice,Criminal courts,4
+Law,Criminal courts,4
+People in Crisis on Streets and Subways,Crisis response,4
+Solving Cases: The People,Criminal courts,4
+Solving Cases: The System,Criminal courts,4
+Crime Stories,Crime,3
+Incarceration Stories,Rikers & jails,3
+Public Perception and Statistical Realities,Crime,3
+Subway Safety,Crime,3
+Subway Safety Stories,Crime,3
+Two Sides of the Gun: Stories of Possession and Victimization,Guns,3
+Gun Violence.,Guns,2
+Alcohol,Drugs,1
+Guns,Guns,1
+Incarceration.,Rikers & jails,1
+Legalization,Drugs,1
+My Substance Story,Drugs,1
+Prosecution.,Criminal courts,1
+Substance Abuse,Drugs,1
 Race,Race,15
 Inequality,Race,12
 Gender,Race,1
 Transit,Transit,28
 Infrastructure,Transit,21
 Transportation,Transit,15
-Why the Trains Matter,Transit,10
+Why the Trains Matter,Subway,10
 Streets,Transit,7
-Subways,Transit,2
+Subways,Subway,2
 Traffic,Transit,1

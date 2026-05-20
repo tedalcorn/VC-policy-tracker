@@ -36,6 +36,16 @@ BUCKET_MAP = ROOT / "config" / "tag_bucket_map.csv"
 AGENCY_PATTERNS = ROOT / "config" / "agency_patterns.csv"
 BYLINE_ALIASES = ROOT / "config" / "byline_aliases.csv"
 ARTICLE_TYPES = ROOT / "config" / "article_types.csv"
+BUCKET_OVERRIDES = ROOT / "config" / "article_bucket_overrides.csv"
+
+# When an article lands in any of these specific Public Safety sub-buckets,
+# the broad "Crime" bucket gets suppressed — keeps the more specific reading.
+PS_SPECIFIC = {
+    "Rikers & jails", "Criminal courts", "Policing", "Crisis response",
+    "Drugs", "Guns", "Crime data", "Public safety strategy", "Disorder",
+    "Cars", "Mental illness", "Community violence intervention",
+    "Shoplifting", "Domestic violence",
+}
 
 # Surname particles that should be folded into the last name for sorting.
 # "Brandon del Pozo" -> "del Pozo", "Vishaan Chakrabarti" -> "Chakrabarti".
@@ -135,6 +145,19 @@ def load_article_type_overrides() -> dict[str, str]:
         return {row["slug"]: row["article_type"] for row in csv.DictReader(f)}
 
 
+def load_bucket_overrides() -> dict[str, list[str]]:
+    """Slug → explicit list of domain buckets that replaces the tag-derived
+    buckets entirely. Use when tag-based mapping puts a piece in the wrong
+    place (e.g., a Crime-tagged piece that's really about gun policy)."""
+    if not BUCKET_OVERRIDES.exists():
+        return {}
+    out = {}
+    with BUCKET_OVERRIDES.open(newline="") as f:
+        for row in csv.DictReader(f):
+            out[row["slug"]] = [b.strip() for b in row["buckets"].split(";") if b.strip()]
+    return out
+
+
 def derive_article_type(tags: list[str], slug: str, overrides: dict[str, str]) -> str:
     """Pick an article_type from explicit overrides, then tag-based heuristics."""
     if slug in overrides:
@@ -189,6 +212,10 @@ def normalize_buckets(tag_names: list[str], bucket_map: dict[str, str]) -> list[
         bucket = bucket_map.get(t)
         if bucket and bucket not in seen:
             seen.append(bucket)
+    # Suppression rule: when a more specific Public Safety sub-bucket is
+    # present, the broad "Crime" catch-all adds noise. Drop it.
+    if "Crime" in seen and any(b in PS_SPECIFIC for b in seen):
+        seen = [b for b in seen if b != "Crime"]
     if not seen:
         seen.append("Other")
     return seen
@@ -201,6 +228,7 @@ def main() -> None:
     agency_patterns = load_agency_patterns()
     byline_aliases = load_byline_aliases()
     type_overrides = load_article_type_overrides()
+    bucket_overrides = load_bucket_overrides()
 
     articles = []
     article_text = {}
@@ -226,6 +254,8 @@ def main() -> None:
                 unmapped_tags[t] += 1
 
         buckets = normalize_buckets(public_tags, bucket_map)
+        if slug in bucket_overrides:
+            buckets = bucket_overrides[slug]
         for b in buckets:
             bucket_counter[b] += 1
 

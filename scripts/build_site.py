@@ -38,7 +38,15 @@ def load_policy_scores() -> dict[str, dict]:
     if not POLICY_SCORES_CSV.exists():
         return {}
     with POLICY_SCORES_CSV.open(newline="") as f:
-        return {row["slug"]: row for row in csv.DictReader(f)}
+        scores = {row["slug"]: row for row in csv.DictReader(f)}
+    # Merge in supporting excerpts if extracted
+    excerpts_path = PROCESSED / "policy_excerpts.csv"
+    if excerpts_path.exists():
+        with excerpts_path.open(newline="") as f:
+            for r in csv.DictReader(f):
+                if r["slug"] in scores:
+                    scores[r["slug"]]["supporting_excerpt"] = r["supporting_excerpt"]
+    return scores
 
 
 def load_author_master() -> list[dict]:

@@ -1,52 +1,51 @@
 display_name,level,patterns
-NYPD,city,"NYPD|\bNew York Police Department\b|\bNew York City Police\b"
-DOC,city,"\bDOC\b|\bDepartment of Correction\b"
-DOE,city,"\bDOE\b|\bDepartment of Education\b|\bNYC schools\b|\bSchools Chancellor\b"
-HPD,city,"\bHPD\b|\bHousing Preservation and Development\b"
-NYCHA,city,"\bNYCHA\b|\bHousing Authority\b"
-DCP,city,"\bDCP\b|\bDepartment of City Planning\b|\bCity Planning Commission\b"
-DSS,city,"\bDSS\b|\bDepartment of Social Services\b"
-HRA,city,"\bHRA\b|\bHuman Resources Administration\b"
-DOHMH,city,"\bDOHMH\b|\bDepartment of Health and Mental Hygiene\b|\bcity health department\b"
-DOT,city,"\bDOT\b|\bDepartment of Transportation\b"
-DCAS,city,"\bDCAS\b|\bCitywide Administrative Services\b"
-DSNY,city,"\bDSNY\b|\bDepartment of Sanitation\b|\bSanitation Department\b"
-DEP,city,"\bDEP\b|\bDepartment of Environmental Protection\b"
-FDNY,city,"\bFDNY\b|\bFire Department\b"
-DOB,city,"\bDOB\b|\bDepartment of Buildings\b"
-TLC,city,"\bTLC\b|\bTaxi and Limousine Commission\b"
-DCWP,city,"\bDCWP\b|\bConsumer and Worker Protection\b"
-DPR,city,"\bDPR\b|\bParks Department\b|\bDepartment of Parks\b"
-DHS,city,"\bDHS\b|\bDepartment of Homeless Services\b"
-ACS,city,"\bACS\b|\bAdministration for Children's Services\b"
-EDC,city,"\bEDC\b|\bEconomic Development Corporation\b"
-City Council,city,"\bCity Council\b"
-Mayor's Office,city,"\bMayor's Office\b|\bOffice of the Mayor\b|\bMayor Mamdani\b|\bMayor Adams\b|\bMayor de Blasio\b"
-Comptroller,city,"\bComptroller\b"
-Public Advocate,city,"\bPublic Advocate\b"
-District Attorney,city,"\bdistrict attorney\b|\bDA's office\b|\bDistrict Attorney's Office\b"
-OMB,city,"\bOMB\b|\bOffice of Management and Budget\b"
-CCRB,city,"\bCCRB\b|\bCivilian Complaint Review Board\b"
-DOI,city,"\bDOI\b|\bDepartment of Investigation\b"
-DDC,city,"\bDDC\b|\bDepartment of Design and Construction\b"
-DYCD,city,"\bDYCD\b|\bYouth and Community Development\b"
-NYC Department of Probation,city,"\bDepartment of Probation\b"
-Five Borough DAs,city,"\bManhattan DA\b|\bBrooklyn DA\b|\bQueens DA\b|\bBronx DA\b|\bStaten Island DA\b"
-MTA,state,"\bMTA\b|\bMetropolitan Transportation Authority\b"
-Governor,state,"\bGovernor Hochul\b|\bGovernor Cuomo\b|\bHochul administration\b"
-State Legislature,state,"\bState Legislature\b|\bAlbany\b|\bState Assembly\b|\bState Senate\b"
-DCJS,state,"\bDCJS\b|\bDivision of Criminal Justice Services\b"
-NYS DEC,state,"\bDEC\b|\bDepartment of Environmental Conservation\b"
-DOCCS,state,"\bDOCCS\b|\bDepartment of Corrections and Community Supervision\b"
-NY Court of Appeals,state,"\bCourt of Appeals\b"
-State AG,state,"\bAttorney General\b|\bLetitia James\b"
-HUD,federal,"\bHUD\b|\bHousing and Urban Development\b"
-ICE,federal,"\bICE\b|\bImmigration and Customs Enforcement\b"
-DOJ,federal,"\bDOJ\b|\bJustice Department\b"
-HHS,federal,"\bHHS\b|\bHealth and Human Services\b"
-FBI,federal,"\bFBI\b|\bFederal Bureau of Investigation\b"
-DEA,federal,"\bDEA\b|\bDrug Enforcement Administration\b"
-ATF,federal,"\bATF\b|\bBureau of Alcohol\b"
-Congress,federal,"\bCongress\b|\bU\.S\. House\b|\bSenate\b"
-White House,federal,"\bWhite House\b|\bPresident Trump\b|\bPresident Biden\b|\bTrump administration\b|\bBiden administration\b"
-Supreme Court,federal,"\bSupreme Court\b"
+NYPD,city,NYPD|\bNew York Police Department\b|\bNew York City Police\b
+DOC,city,\bDOC\b|\bDepartment of Correction\b
+DOE,city,\bDOE\b|\bDepartment of Education\b|\bNYC schools\b|\bSchools Chancellor\b
+HPD,city,\bHPD\b|\bHousing Preservation and Development\b
+NYCHA,city,\bNYCHA\b|\bHousing Authority\b
+DCP,city,\bDCP\b|\bDepartment of City Planning\b|\bCity Planning Commission\b
+DSS,city,\bDSS\b|\bDepartment of Social Services\b
+HRA,city,\bHRA\b|\bHuman Resources Administration\b
+DOHMH,city,\bDOHMH\b|\bDepartment of Health and Mental Hygiene\b|\bcity health department\b
+DOT,city,\bDOT\b|\bDepartment of Transportation\b
+DCAS,city,\bDCAS\b|\bCitywide Administrative Services\b
+DSNY,city,\bDSNY\b|\bDepartment of Sanitation\b|\bSanitation Department\b
+DEP,city,\bDEP\b|\bDepartment of Environmental Protection\b
+FDNY,city,\bFDNY\b|\bFire Department\b
+DOB,city,\bDOB\b|\bDepartment of Buildings\b
+TLC,city,\bTLC\b|\bTaxi and Limousine Commission\b
+DCWP,city,\bDCWP\b|\bConsumer and Worker Protection\b
+DPR,city,\bDPR\b|\bParks Department\b|\bDepartment of Parks\b
+DHS,city,\bDHS\b|\bDepartment of Homeless Services\b
+ACS,city,\bACS\b|\bAdministration for Children's Services\b
+EDC,city,\bEDC\b|\bEconomic Development Corporation\b
+City Council,city,\bCity Council\b
+NYC Mayor Mamdani,city,\bMayor's Office\b|\bOffice of the Mayor\b|\bMayor Mamdani\b|\bMayor Adams\b|\bMayor de Blasio\b
+Comptroller,city,\bComptroller\b
+Public Advocate,city,\bPublic Advocate\b
+OMB,city,\bOMB\b|\bOffice of Management and Budget\b
+CCRB,city,\bCCRB\b|\bCivilian Complaint Review Board\b
+DOI,city,\bDOI\b|\bDepartment of Investigation\b
+DDC,city,\bDDC\b|\bDepartment of Design and Construction\b
+DYCD,city,\bDYCD\b|\bYouth and Community Development\b
+NYC Department of Probation,city,\bDepartment of Probation\b
+MTA,state,\bMTA\b|\bMetropolitan Transportation Authority\b
+NY Governor Hochul,state,\bGovernor Hochul\b|\bGovernor Cuomo\b|\bHochul administration\b
+State Legislature,state,\bState Legislature\b|\bAlbany\b|\bState Assembly\b|\bState Senate\b
+DCJS,state,\bDCJS\b|\bDivision of Criminal Justice Services\b
+NYS DEC,state,\bDEC\b|\bDepartment of Environmental Conservation\b
+DOCCS,state,\bDOCCS\b|\bDepartment of Corrections and Community Supervision\b
+NY Court of Appeals,state,\bCourt of Appeals\b
+State AG,state,\bAttorney General\b|\bLetitia James\b
+HUD,federal,\bHUD\b|\bHousing and Urban Development\b
+ICE,federal,\bICE\b|\bImmigration and Customs Enforcement\b
+DOJ,federal,\bDOJ\b|\bJustice Department\b
+HHS,federal,\bHHS\b|\bHealth and Human Services\b
+FBI,federal,\bFBI\b|\bFederal Bureau of Investigation\b
+DEA,federal,\bDEA\b|\bDrug Enforcement Administration\b
+ATF,federal,\bATF\b|\bBureau of Alcohol\b
+U.S. Congress,federal,\bCongress\b|\bU\.S\. House\b|\bSenate\b
+White House,federal,\bWhite House\b|\bPresident Trump\b|\bPresident Biden\b|\bTrump administration\b|\bBiden administration\b
+Supreme Court,federal,\bSupreme Court\b
+District Attorneys,city,\bdistrict attorney\b|\bDA's office\b|\bDistrict Attorney's Office\b|\bManhattan DA\b|\bBrooklyn DA\b|\bQueens DA\b|\bBronx DA\b|\bStaten Island DA\b

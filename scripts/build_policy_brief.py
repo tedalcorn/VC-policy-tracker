@@ -2,9 +2,8 @@
 """Generate a shareable policy-asks brief as a .docx for Ted to send to editors.
 
 Filters articles with AI-assigned policy-ask score >= MIN_SCORE, groups by the
-article's primary domain (first bucket), and within Public Safety sub-groups
-by who is being asked. Within each (sub)group: bullets with date, title (as
-hyperlink), author, and the ask in italics with the bolded target prefix.
+article's primary domain (first bucket). Each bullet: date, title (as
+hyperlink), author, and the ask in italics.
 
 Output: projects/2026-05-19-policy-asks-brief/brief.docx
 """
@@ -31,7 +30,15 @@ OUT = ROOT / "projects" / "2026-05-19-policy-asks-brief" / "brief.docx"
 MIN_SCORE = 4
 
 DOMAIN_ORDER = [
-    "Public Safety",
+    "Rikers & jails",
+    "Criminal courts",
+    "Policing",
+    "Crisis response",
+    "Guns",
+    "Drugs",
+    "Crime Data",
+    "Public Safety Strategy",
+    "Crime",
     "Governance",
     "Politics",
     "Housing",
@@ -45,22 +52,6 @@ DOMAIN_ORDER = [
     "Immigration",
     "Climate",
     "Other",
-]
-
-# Ordered most-specific first; first match wins.
-PUBLIC_SAFETY_SUBGROUPS = [
-    ("Department of Community Safety (Mamdani administration)",
-        re.compile(r"\bDepartment of Community Safety\b|\bcommunity safety office\b", re.I)),
-    ("Rikers, jails, and the courts that govern them",
-        re.compile(r"\bRikers\b|\bjails?\b|\bDOC\b|\bDepartment of Correction\b|\breceiver\b|\bNunez\b|\bSwain\b|\bcorrections?\b", re.I)),
-    ("NYPD",
-        re.compile(r"\bNYPD\b|\bpolice department\b|\bpolice strategy\b", re.I)),
-    ("State government (Albany / Hochul / Legislature / state agencies)",
-        re.compile(r"\bAlbany\b|\bHochul\b|\bstate legislature\b|\bstate assembly\b|\bstate senate\b|\bstate government\b|\bstate court system\b|\bstate of new york\b|\bgovernor\b", re.I)),
-    ("Adams administration (may no longer be relevant)",
-        re.compile(r"\bMayor Adams\b|\bAdams administration\b|\bEric Adams\b", re.I)),
-    ("Other city government (Mayor's office, City Council, etc.)",
-        re.compile(r"\bCity Council\b|\bMayor\b|\bcity hall\b|\bcity government\b|\bnext mayoral administration\b|\bnew york city government\b", re.I)),
 ]
 
 
@@ -80,14 +71,6 @@ def freshen_mamdani(s: str) -> str:
     out = re.sub(r"\bMayor[- ]elect (Zohran )?Mamdani\b", "Mayor Mamdani", out)
     out = re.sub(r"\bZohran Mamdani\b(?!')", "Mayor Mamdani", out)
     return out
-
-
-def classify_public_safety(target: str, ask: str) -> str:
-    haystack = (target or "") + " " + (ask or "")
-    for label, pat in PUBLIC_SAFETY_SUBGROUPS:
-        if pat.search(haystack):
-            return label
-    return "Other (federal, regulatory, etc.)"
 
 
 def add_hyperlink(paragraph, url: str, text: str):
@@ -197,24 +180,8 @@ def main() -> int:
             continue
         items.sort(key=lambda q: -int(q["date"].replace("-", "")))
         doc.add_heading(f"{domain} ({len(items)})", level=1)
-
-        if domain == "Public Safety":
-            # Sub-group by what / who the ask is aimed at.
-            sub = defaultdict(list)
-            sub_order = [label for label, _ in PUBLIC_SAFETY_SUBGROUPS] + [
-                "Other (federal, regulatory, etc.)"
-            ]
-            for q in items:
-                sub[classify_public_safety(q["target"], q["ask"])].append(q)
-            for label in sub_order:
-                if not sub.get(label):
-                    continue
-                doc.add_heading(f"{label} ({len(sub[label])})", level=2)
-                for q in sub[label]:
-                    add_ask_paragraph(doc, q)
-        else:
-            for q in items:
-                add_ask_paragraph(doc, q)
+        for q in items:
+            add_ask_paragraph(doc, q)
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     doc.save(str(OUT))
