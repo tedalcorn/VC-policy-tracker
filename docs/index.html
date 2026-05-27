@@ -148,8 +148,14 @@ tbody tr:hover { background: #fbf9f3; }
 #pol-table th:nth-child(8), #pol-table td:nth-child(8) { width: 96px; }   /* status */
 #pol-table td { word-wrap: break-word; overflow-wrap: anywhere; }
 #pol-table td.rec-cell { white-space: normal; }
+/* Let the domain pill wrap inside its column instead of overflowing into Title
+   (long labels like "Public safety strategy"). */
+#pol-table td:nth-child(2) .pill { white-space: normal; max-width: 100%; }
 /* Override .pill's nowrap so multi-agency cells stack vertically inside their column */
 #pol-table td:nth-child(6) .pill { white-space: normal; display: inline-block; margin-bottom: 2px; max-width: 100%; }
+/* Institutional-author marker in the Author column. */
+.vc-badge { display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 0.04em;
+  padding: 0 4px; border-radius: 6px; background: #2c4870; color: #fff; vertical-align: middle; }
 #pol-table th.active, #art-table th.active { color: var(--ink); }
 #pol-table th.active::after, #art-table th.active::after { content: " ↓"; }
 #pol-table th.active.asc::after, #art-table th.active.asc::after { content: " ↑"; }
@@ -404,6 +410,11 @@ tbody tr:hover { background: #fbf9f3; }
 
 <section class="tab" id="tab-policy">
   <div class="policy-controls">
+    <select id="pol-affiliation">
+      <option value="">All authors</option>
+      <option value="team">VC team</option>
+      <option value="contributors">Outside contributors</option>
+    </select>
     <select id="pol-domain"><option value="">All domains</option></select>
     <select id="pol-agency"><option value="">All agencies</option></select>
     <select id="pol-status"><option value="">All action statuses</option></select>
@@ -529,7 +540,7 @@ META_CATEGORIES.forEach(mc => {
   });
 });
 
-let ARTICLES = [], POLICY = {}, AUTHORS = [], SUMMARY = {}, SCORES = {};
+let ARTICLES = [], POLICY = {}, AUTHORS = [], SUMMARY = {}, SCORES = {}, INSTITUTIONAL = {};
 let SORT_KEY = "published_at", SORT_DIR = -1;
 
 function bucketPill(b) {
@@ -569,6 +580,11 @@ async function loadData() {
   AUTHORS = auts;
   SUMMARY = sum;
   SCORES = scores;
+  // author name -> "core" | "affiliated" | "" (outside contributor).
+  // Drives the Policy tracker's VC team / contributor filter and badges.
+  INSTITUTIONAL = Object.fromEntries(
+    AUTHORS.filter(a => a.institutional).map(a => [a.author, a.institutional])
+  );
   renderHeader();
   populateFilters();
   renderArticles();
@@ -933,8 +949,15 @@ function renderAuthorDetail() {
 }
 
 // ============ Policy tracker tab ============
+// Small marker next to Vital City team authors.
+function authorBadge(author) {
+  return INSTITUTIONAL[author]
+    ? ` <span class="vc-badge" title="Vital City team">VC</span>`
+    : "";
+}
 let POL_SORT = { key: "score", dir: -1 };  // default: highest confidence first
 function renderPolicy() {
+  const affiliation = document.getElementById("pol-affiliation").value;
   const domain = document.getElementById("pol-domain").value;
   const agency = document.getElementById("pol-agency").value;
   const status = document.getElementById("pol-status").value;
@@ -950,6 +973,11 @@ function renderPolicy() {
     const inferredOnly = document.getElementById("pol-inferred-only").checked;
     const minScore = inferredOnly ? 3 : 1;
     if (score < minScore) return false;
+    if (affiliation) {
+      const tier = INSTITUTIONAL[p.primary_author] || "";
+      if (affiliation === "team" && !tier) return false;
+      if (affiliation === "contributors" && tier) return false;
+    }
     if (domain) {
       const a = articleBySlug[s] || {};
       if (!(a.buckets || []).includes(domain)) return false;
@@ -1004,7 +1032,7 @@ function renderPolicy() {
       <td>${fmtDate(p.published_at)}</td>
       <td>${domainPill}</td>
       <td><a class="title-link" href="${a.url||p.url||"#"}" target="_blank" rel="noopener">${escapeHtml(p.title)}</a></td>
-      <td>${escapeHtml(p.primary_author||"")}</td>
+      <td>${escapeHtml(p.primary_author||"")}${authorBadge(p.primary_author)}</td>
       <td class="rec-cell">${escapeHtml(p.rec_summary||"")}</td>
       <td>${(p.agencies||"").split(/;\s*/).filter(Boolean).map(x=>`<span class="pill">${escapeHtml(x)}</span>`).join("")}</td>
       <td>${scoreCell}</td>
@@ -1089,6 +1117,7 @@ const HASH_FIELDS = [
   ["aut-profession",    "autprof",   "select",   ""],
   ["aut-domain",        "autdomain", "select",   ""],
   ["aut-articles-only", "autart",    "checkbox", true],
+  ["pol-affiliation",   "polaff",    "select",   ""],
   ["pol-domain",        "poldomain", "select",   ""],
   ["pol-agency",        "polagency", "select",   ""],
   ["pol-status",        "polstatus", "select",   ""],
@@ -1176,7 +1205,7 @@ document.querySelectorAll(".author-header .sort-h").forEach(el => {
     renderAuthors();
   };
 });
-["pol-domain","pol-agency","pol-status","pol-lever","pol-inferred-only"].forEach(id => document.getElementById(id).onchange = renderPolicyAndSync);
+["pol-affiliation","pol-domain","pol-agency","pol-status","pol-lever","pol-inferred-only"].forEach(id => document.getElementById(id).onchange = renderPolicyAndSync);
 document.querySelectorAll("#pol-table th").forEach(th => th.onclick = () => {
   const k = th.dataset.sort;
   if (k === POL_SORT.key) POL_SORT.dir *= -1;

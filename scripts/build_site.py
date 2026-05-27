@@ -49,12 +49,33 @@ def load_policy_scores() -> dict[str, dict]:
     return scores
 
 
+def load_institutional_authors() -> set[str]:
+    """Vital City team authors from config/institutional_authors.csv.
+
+    These are VC team / payroll authors whose recommendations carry the
+    magazine's institutional voice, as opposed to outside contributors.
+    """
+    path = ROOT / "config" / "institutional_authors.csv"
+    if not path.exists():
+        return set()
+    with path.open(newline="") as f:
+        return {
+            r["author"].strip()
+            for r in csv.DictReader(f)
+            if r.get("author", "").strip()
+        }
+
+
 def load_author_master() -> list[dict]:
     path = PROCESSED / "vital_city_author_master.csv"
     if not path.exists():
         return []
+    institutional = load_institutional_authors()
     with path.open(newline="") as f:
-        return list(csv.DictReader(f))
+        authors = list(csv.DictReader(f))
+    for a in authors:
+        a["institutional"] = "yes" if a.get("author", "").strip() in institutional else ""
+    return authors
 
 
 def main() -> int:
